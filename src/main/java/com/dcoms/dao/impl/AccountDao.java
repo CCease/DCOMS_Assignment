@@ -1,9 +1,9 @@
-package com.dcoms.dao.impl;
+package main.java.com.dcoms.dao.impl;
 
-import com.dcoms.client.customer.login.My_CNX;
-import com.dcoms.dao.IAccountDao;
-import com.dcoms.domain.Account;
-import com.dcoms.utils.DomainBuilder;
+import main.java.com.dcoms.client.customer.login.My_CNX;
+import main.java.com.dcoms.dao.IAccountDao;
+import main.java.com.dcoms.domain.Account;
+import main.java.com.dcoms.utils.DomainBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

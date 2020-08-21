@@ -1,4 +1,4 @@
-package com.dcoms.client.customer.login;
+package main.java.com.dcoms.client.customer.login;
 
 public class DCOMSAssignment {
 

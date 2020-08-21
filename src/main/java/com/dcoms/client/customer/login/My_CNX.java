@@ -1,4 +1,4 @@
-package com.dcoms.client.customer.login;
+package main.java.com.dcoms.client.customer.login;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.sql.Connection;

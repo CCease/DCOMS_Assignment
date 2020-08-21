@@ -1,18 +1,22 @@
-package com.dcoms.service.impl;
+package main.java.com.dcoms.service.impl;
 
-import com.dcoms.dao.IAccountDao;
-import com.dcoms.domain.Account;
-import com.dcoms.service.IAccountService;
+import main.java.com.dcoms.dao.IAccountDao;
+import main.java.com.dcoms.domain.Account;
+import main.java.com.dcoms.service.IAccountService;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 public class AccountService extends UnicastRemoteObject implements IAccountService {
+    
+    public AccountService()throws RemoteException{
+        super();
+    }
 
     IAccountDao iAccountDao;
-
-    public AccountService(IAccountDao iAccountDao) throws RemoteException {
-        super();
+    
+    @Override
+    public void setiAccountDao(IAccountDao iAccountDao)throws RemoteException{      
         this.iAccountDao = iAccountDao;
     }
 

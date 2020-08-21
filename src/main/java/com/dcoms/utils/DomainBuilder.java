@@ -1,8 +1,8 @@
-package com.dcoms.utils;
+package main.java.com.dcoms.utils;
 
-import com.dcoms.domain.Account;
-import com.dcoms.domain.Food;
-import com.dcoms.domain.Order;
+import main.java.com.dcoms.domain.Account;
+import main.java.com.dcoms.domain.Food;
+import main.java.com.dcoms.domain.Order;
 
 import java.util.List;
 

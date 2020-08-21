@@ -1,4 +1,4 @@
-package com.dcoms.utils;
+package main.java.com.dcoms.utils;
 
 import java.util.UUID;
 
