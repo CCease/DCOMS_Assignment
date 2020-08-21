@@ -53,7 +53,11 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
 
     @Override
     public boolean login(Account account) {
-        if (account == iAccountDao.findAccountById(account.getId())){
+        Account databaseAccount = iAccountDao.findAccountByUsername(account.getPhoneNumber());
+        if (databaseAccount == null){
+            return false;
+        }
+        if (account.getPassword() == databaseAccount.getPassword()){
             return true;
         }
         else{

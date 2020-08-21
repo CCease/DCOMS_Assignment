@@ -1,6 +1,11 @@
 package com.dcoms.client.customer.login;
 
+import com.dcoms.dao.impl.AccountDao;
+import com.dcoms.domain.Account;
+import com.dcoms.service.impl.AccountService;
+
 import java.awt.Color;
+import java.rmi.RemoteException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -257,23 +262,26 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
-        PreparedStatement st;
-        ResultSet rs;
+        //PreparedStatement st;
+        //ResultSet rs;
         
         //get username and password
         String username = jTextFieldUsername.getText();
         String password = new String(jTextFieldPassword.getPassword());
         
         //Create a select query to check if the username and password exist in the database
-        String query = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
+        //String query = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
         try {
-            st = My_CNX.getConnection().prepareStatement(query);
-            
+      /*      st = My_CNX.getConnection().prepareStatement(query);
+
             st.setString(1, username);
             st.setString(2, password);
-            rs = st.executeQuery();
-            
-            if(rs.next()){
+            rs = st.executeQuery();*/
+            AccountService accountService = new AccountService(new AccountDao());
+            Account account = new Account();
+            account.setPhoneNumber(username);
+            account.setPassword(password);
+            if(accountService.login(account)){
                 //Display user main page
                 com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
                 custmp.setVisible(true);
@@ -287,8 +295,9 @@ public class Login extends javax.swing.JFrame {
                 //Show message error
                 JOptionPane.showMessageDialog(rootPane, "Invalid Username or Password");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, e);
         }
         
     }//GEN-LAST:event_jButtonLoginActionPerformed
