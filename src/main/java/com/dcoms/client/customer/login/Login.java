@@ -1,4 +1,4 @@
-package Login;
+package com.dcoms.client.customer.login;
 
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -275,7 +275,7 @@ public class Login extends javax.swing.JFrame {
             
             if(rs.next()){
                 //Display user main page
-                Customer.CustomerMainPage custmp = new Customer.CustomerMainPage();
+                com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
                 custmp.setVisible(true);
                 custmp.pack();
                 custmp.setLocationRelativeTo(null);
