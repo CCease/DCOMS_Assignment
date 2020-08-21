@@ -1,15 +1,8 @@
-package Customer;
+package com.dcoms.client.customer.mainpage;
 
 import java.awt.Image;
-import java.awt.Toolkit;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 public class CustomerMainPage extends javax.swing.JFrame {
@@ -28,97 +21,98 @@ public class CustomerMainPage extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
         
         //inialize food images
-        ImageIcon image01 = new ImageIcon("src/Images/Salad.png");
+        //ImageIcon image01 = new ImageIcon("src/Images/Salad.png");
+        ImageIcon image01 = new ImageIcon("src/main/resources/images/Salad.png");
         Image img1 = image01.getImage();
         Image img2 = img1.getScaledInstance(jLabel01.getWidth(), jLabel01.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon a = new ImageIcon(img2);
         jLabel01.setIcon(a);
         
-        ImageIcon image02 = new ImageIcon("src/Images/JapanesePanNoodles.png");
+        ImageIcon image02 = new ImageIcon("src/main/resources/images/JapanesePanNoodles.png");
         Image img3 = image02.getImage();
         Image img4 = img3.getScaledInstance(jLabel02.getWidth(), jLabel02.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon b = new ImageIcon(img4);
         jLabel02.setIcon(b);
         
-        ImageIcon image03 = new ImageIcon("src/Images/spaghetti.jpg");
+        ImageIcon image03 = new ImageIcon("src/main/resources/images/spaghetti.jpg");
         Image img5 = image03.getImage();
         Image img6 = img5.getScaledInstance(jLabel03.getWidth(), jLabel03.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon c = new ImageIcon(img6);
         jLabel03.setIcon(c);
         
-        ImageIcon image04 = new ImageIcon("src/Images/Macaroni.png");
+        ImageIcon image04 = new ImageIcon("src/main/resources/images/Macaroni.png");
         Image img7 = image04.getImage();
         Image img8 = img7.getScaledInstance(jLabel04.getWidth(), jLabel04.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon d = new ImageIcon(img8);
         jLabel04.setIcon(d);
         
-        ImageIcon image05 = new ImageIcon("src/Images/RamenNoodles.png");
+        ImageIcon image05 = new ImageIcon("src/main/resources/images/RamenNoodles.png");
         Image img9 = image05.getImage();
         Image img10 = img9.getScaledInstance(jLabel05.getWidth(), jLabel05.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon e = new ImageIcon(img10);
         jLabel05.setIcon(e);
         
-        ImageIcon image06 = new ImageIcon("src/Images/kidsSpaghetti.png");
+        ImageIcon image06 = new ImageIcon("src/main/resources/images/kidsSpaghetti.png");
         Image img11 = image06.getImage();
         Image img12 = img11.getScaledInstance(jLabel06.getWidth(), jLabel06.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon f = new ImageIcon(img12);
         jLabel06.setIcon(f);
         
-        ImageIcon image07 = new ImageIcon("src/Images/chickenRice.JPG");
+        ImageIcon image07 = new ImageIcon("src/main/resources/images/chickenRice.JPG");
         Image img13 = image07.getImage();
         Image img14 = img13.getScaledInstance(jLabel07.getWidth(), jLabel07.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon g = new ImageIcon(img14);
         jLabel07.setIcon(g);
         
-        ImageIcon image08 = new ImageIcon("src/Images/thaiFood.jpeg");
+        ImageIcon image08 = new ImageIcon("src/main/resources/images/thaiFood.jpeg");
         Image img15 = image08.getImage();
         Image img16 = img15.getScaledInstance(jLabel08.getWidth(), jLabel08.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon h = new ImageIcon(img16);
         jLabel08.setIcon(h);
         
-        ImageIcon image09 = new ImageIcon("src/Images/vietnamFood.jpg");
+        ImageIcon image09 = new ImageIcon("src/main/resources/images/vietnamFood.jpg");
         Image img17 = image09.getImage();
         Image img18 = img17.getScaledInstance(jLabel09.getWidth(), jLabel09.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon i = new ImageIcon(img18);
         jLabel09.setIcon(i);
         
-        ImageIcon image10 = new ImageIcon("src/Images/raspberry.jpg");
+        ImageIcon image10 = new ImageIcon("src/main/resources/images/raspberry.jpg");
         Image img19 = image10.getImage();
         Image img20 = img19.getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon j = new ImageIcon(img20);
         jLabel10.setIcon(j);
         
-        ImageIcon image11 = new ImageIcon("src/Images/chocolatePudding.jpg");
+        ImageIcon image11 = new ImageIcon("src/main/resources/images/chocolatePudding.jpg");
         Image img21 = image11.getImage();
         Image img22 = img21.getScaledInstance(jLabel11.getWidth(), jLabel11.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon k = new ImageIcon(img22);
         jLabel11.setIcon(k);
         
-        ImageIcon image12 = new ImageIcon("src/Images/blueHawailan.jpg");
+        ImageIcon image12 = new ImageIcon("src/main/resources/images/blueHawailan.jpg");
         Image img23 = image12.getImage();
         Image img24 = img23.getScaledInstance(jLabel12.getWidth(), jLabel12.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon l = new ImageIcon(img24);
         jLabel12.setIcon(l);
         
-        ImageIcon image13 = new ImageIcon("src/Images/Pina.jpg");
+        ImageIcon image13 = new ImageIcon("src/main/resources/images/Pina.jpg");
         Image img25 = image13.getImage();
         Image img26 = img25.getScaledInstance(jLabel13.getWidth(), jLabel13.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon m = new ImageIcon(img26);
         jLabel13.setIcon(m);
         
-        ImageIcon image14 = new ImageIcon("src/Images/lemonIce.jpg");
+        ImageIcon image14 = new ImageIcon("src/main/resources/images/lemonIce.jpg");
         Image img27 = image14.getImage();
         Image img28 = img27.getScaledInstance(jLabel14.getWidth(), jLabel14.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon n = new ImageIcon(img28);
         jLabel14.setIcon(n);
         
-        ImageIcon image15 = new ImageIcon("src/Images/strawberryCake.jpg");
+        ImageIcon image15 = new ImageIcon("src/main/resources/images/strawberryCake.jpg");
         Image img29 = image15.getImage();
         Image img30 = img29.getScaledInstance(jLabel15.getWidth(), jLabel15.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon o = new ImageIcon(img30);
         jLabel15.setIcon(o);
         
-        ImageIcon image16 = new ImageIcon("src/Images/chocolateCake.jpg");
+        ImageIcon image16 = new ImageIcon("src/main/resources/images/chocolateCake.jpg");
         Image img31 = image16.getImage();
         Image img32 = img31.getScaledInstance(jLabel16.getWidth(), jLabel16.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon p = new ImageIcon(img32);
