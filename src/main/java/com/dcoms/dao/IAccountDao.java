@@ -10,6 +10,8 @@ public interface IAccountDao {
 
     Account findAccountById(String id);
 
+    Account findAccountByUsername(String username);
+
     Account findAccountByName(String firstName, String lastName);
 
     void addAccount(Account account);
