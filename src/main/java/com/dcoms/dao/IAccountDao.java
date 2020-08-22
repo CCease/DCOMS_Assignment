@@ -6,7 +6,7 @@ import main.java.com.dcoms.domain.Account;
 
 import java.util.List;
 
-public interface IAccountDao extends Remote{
+public interface IAccountDao {
 
     List<Account> findAllAccount();
 
