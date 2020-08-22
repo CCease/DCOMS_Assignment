@@ -1,4 +1,4 @@
-package com.dcoms.domain;
+package main.java.com.dcoms.domain;
 
 import java.util.List;
 

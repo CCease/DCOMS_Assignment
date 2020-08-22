@@ -1,8 +1,8 @@
-package com.dcoms.client.customer.login;
+package main.java.com.dcoms.client.customer.login;
 
-import com.dcoms.dao.impl.AccountDao;
-import com.dcoms.domain.Account;
-import com.dcoms.service.impl.AccountService;
+import main.java.com.dcoms.dao.impl.AccountDao;
+import main.java.com.dcoms.domain.Account;
+import main.java.com.dcoms.service.impl.AccountService;
 
 import java.awt.Color;
 import java.rmi.RemoteException;
@@ -84,7 +84,7 @@ public class Login extends javax.swing.JFrame {
         jLabelLTitle.setFont(new java.awt.Font("Forte", 1, 40)); // NOI18N
         jLabelLTitle.setText("McGee Food Ordering System");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mcg logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/images/mcgLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -277,13 +277,14 @@ public class Login extends javax.swing.JFrame {
             st.setString(1, username);
             st.setString(2, password);
             rs = st.executeQuery();*/
-            AccountService accountService = new AccountService(new AccountDao());
+            AccountService accountService = new AccountService();
+            accountService.setiAccountDao(new AccountDao());
             Account account = new Account();
             account.setPhoneNumber(username);
             account.setPassword(password);
             if(accountService.login(account)){
                 //Display user main page
-                com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
+                main.java.com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new main.java.com.dcoms.client.customer.mainpage.CustomerMainPage();
                 custmp.setVisible(true);
                 custmp.pack();
                 custmp.setLocationRelativeTo(null);

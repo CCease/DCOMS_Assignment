@@ -1,4 +1,4 @@
-package com.dcoms.client.customer.mainpage;
+package main.java.com.dcoms.client.customer.mainpage;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;

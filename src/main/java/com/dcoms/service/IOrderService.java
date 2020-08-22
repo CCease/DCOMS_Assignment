@@ -1,8 +1,8 @@
-package com.dcoms.service;
+package main.java.com.dcoms.service;
 
-import com.dcoms.domain.Account;
-import com.dcoms.domain.Food;
-import com.dcoms.domain.Order;
+import main.java.com.dcoms.domain.Account;
+import main.java.com.dcoms.domain.Food;
+import main.java.com.dcoms.domain.Order;
 
 import java.rmi.Remote;
 import java.util.List;

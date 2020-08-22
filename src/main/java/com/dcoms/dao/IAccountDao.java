@@ -1,10 +1,12 @@
-package com.dcoms.dao;
+package main.java.com.dcoms.dao;
 
-import com.dcoms.domain.Account;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import main.java.com.dcoms.domain.Account;
 
 import java.util.List;
 
-public interface IAccountDao {
+public interface IAccountDao extends Remote{
 
     List<Account> findAllAccount();
 

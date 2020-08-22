@@ -1,13 +1,17 @@
-package com.dcoms.service;
+package main.java.com.dcoms.service;
 
-import com.dcoms.domain.Account;
+import main.java.com.dcoms.domain.Account;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.List;
+import main.java.com.dcoms.dao.IAccountDao;
 
 public interface IAccountService extends Remote {
 
     List<Account> findAllAccount();
+    
+    public void setiAccountDao(IAccountDao iAccountDao)throws RemoteException;
 
     Account findAccountById(String id);
 
