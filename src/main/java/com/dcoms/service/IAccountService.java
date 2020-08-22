@@ -9,20 +9,20 @@ import main.java.com.dcoms.dao.IAccountDao;
 
 public interface IAccountService extends Remote {
 
-    List<Account> findAllAccount();
+    List<Account> findAllAccount() throws RemoteException;
     
-    public void setiAccountDao(IAccountDao iAccountDao)throws RemoteException;
+    public void setiAccountDao(IAccountDao iAccountDao) throws RemoteException;
 
-    Account findAccountById(String id);
+    Account findAccountById(String id) throws RemoteException;
 
-    boolean checkAccountByName(String fistName, String lastName);
+    boolean checkAccountByName(String fistName, String lastName) throws RemoteException;
 
-    void addAccount(Account account);
+    void addAccount(Account account) throws RemoteException;
 
-    void updateAccount(Account account);
+    void updateAccount(Account account) throws RemoteException;
 
-    void deleteAccount(Account account);
+    void deleteAccount(Account account) throws RemoteException;
 
-    boolean login(Account account);
+    boolean login(Account account) throws RemoteException;
 
 }

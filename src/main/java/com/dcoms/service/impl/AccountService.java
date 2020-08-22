@@ -21,27 +21,27 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
     }
 
     @Override
-    public List<Account> findAllAccount() {
+    public List<Account> findAllAccount() throws RemoteException{
         return iAccountDao.findAllAccount();
     }
 
     @Override
-    public Account findAccountById(String id) {
+    public Account findAccountById(String id) throws RemoteException {
         return iAccountDao.findAccountById(id);
     }
 
     @Override
-    public void addAccount(Account account) {
+    public void addAccount(Account account) throws RemoteException {
         iAccountDao.addAccount(account);
     }
 
     @Override
-    public void updateAccount(Account account) {
+    public void updateAccount(Account account) throws RemoteException {
         iAccountDao.updateAccount(account);
     }
 
     @Override
-    public boolean checkAccountByName(String firstName, String lastName) {
+    public boolean checkAccountByName(String firstName, String lastName) throws RemoteException {
         if (iAccountDao.findAccountByName(firstName, lastName) == null){
             return false;
         }
@@ -51,12 +51,12 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
     }
 
     @Override
-    public void deleteAccount(Account account) {
+    public void deleteAccount(Account account) throws RemoteException {
         iAccountDao.deleteAccount(account);
     }
 
     @Override
-    public boolean login(Account account) {
+    public boolean login(Account account) throws RemoteException {
         Account databaseAccount = iAccountDao.findAccountByUsername(account.getPhoneNumber());
         if (databaseAccount == null){
             return false;
