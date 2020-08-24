@@ -1,9 +1,9 @@
-package main.java.com.dcoms.dao.impl;
+package com.dcoms.dao.impl;
 
-import main.java.com.dcoms.client.customer.login.My_CNX;
-import main.java.com.dcoms.dao.IAccountDao;
-import main.java.com.dcoms.domain.Account;
-import main.java.com.dcoms.utils.DomainBuilder;
+import com.dcoms.client.customer.login.My_CNX;
+import com.dcoms.dao.IAccountDao;
+import com.dcoms.domain.Account;
+import com.dcoms.utils.DomainBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +41,7 @@ public class AccountDao implements IAccountDao {
 
                 DomainBuilder domainBuilder = new DomainBuilder();
                 return domainBuilder.newAccount(id, first_name, last_name, password, username);
+                //password = password, phonenumber = username
 
             }else{
                 return null;

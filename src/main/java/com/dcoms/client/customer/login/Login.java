@@ -1,8 +1,8 @@
-package main.java.com.dcoms.client.customer.login;
+package com.dcoms.client.customer.login;
 
-import main.java.com.dcoms.dao.impl.AccountDao;
-import main.java.com.dcoms.domain.Account;
-import main.java.com.dcoms.service.impl.AccountService;
+import com.dcoms.dao.impl.AccountDao;
+import com.dcoms.domain.Account;
+import com.dcoms.service.impl.AccountService;
 
 import java.awt.Color;
 import java.rmi.RemoteException;
@@ -282,9 +282,10 @@ public class Login extends javax.swing.JFrame {
             Account account = new Account();
             account.setPhoneNumber(username);
             account.setPassword(password);
+            
             if(accountService.login(account)){
                 //Display user main page
-                main.java.com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new main.java.com.dcoms.client.customer.mainpage.CustomerMainPage();
+                com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
                 custmp.setVisible(true);
                 custmp.pack();
                 custmp.setLocationRelativeTo(null);

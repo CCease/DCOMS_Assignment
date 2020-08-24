@@ -1,8 +1,8 @@
-package main.java.com.dcoms.dao;
+package com.dcoms.dao;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import main.java.com.dcoms.domain.Account;
+import com.dcoms.domain.Account;
 
 import java.util.List;
 

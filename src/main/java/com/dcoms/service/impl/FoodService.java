@@ -1,8 +1,8 @@
-package main.java.com.dcoms.service.impl;
+package com.dcoms.service.impl;
 
-import main.java.com.dcoms.dao.IFoodDao;
-import main.java.com.dcoms.domain.Food;
-import main.java.com.dcoms.service.IFoodService;
+import com.dcoms.dao.IFoodDao;
+import com.dcoms.domain.Food;
+import com.dcoms.service.IFoodService;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

@@ -1,10 +1,10 @@
-package main.java.com.dcoms.service.impl;
+package com.dcoms.service.impl;
 
-import main.java.com.dcoms.dao.IOrderDao;
-import main.java.com.dcoms.domain.Account;
-import main.java.com.dcoms.domain.Food;
-import main.java.com.dcoms.domain.Order;
-import main.java.com.dcoms.service.IOrderService;
+import com.dcoms.dao.IOrderDao;
+import com.dcoms.domain.Account;
+import com.dcoms.domain.Food;
+import com.dcoms.domain.Order;
+import com.dcoms.service.IOrderService;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
