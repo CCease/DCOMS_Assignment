@@ -1,4 +1,4 @@
-package main.java.com.dcoms.domain;
+package com.dcoms.domain;
 
 public class Food {
 

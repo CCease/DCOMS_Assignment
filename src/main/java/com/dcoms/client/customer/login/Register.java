@@ -1,4 +1,4 @@
-package main.java.com.dcoms.client.customer.login;
+package com.dcoms.client.customer.login;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

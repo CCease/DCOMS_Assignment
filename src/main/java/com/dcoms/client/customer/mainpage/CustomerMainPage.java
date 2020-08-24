@@ -1,4 +1,4 @@
-package main.java.com.dcoms.client.customer.mainpage;
+package com.dcoms.client.customer.mainpage;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -175,7 +175,6 @@ public class CustomerMainPage extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabelLTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanelFoods = new javax.swing.JPanel();
         jLabel01 = new javax.swing.JLabel();
@@ -248,21 +247,14 @@ public class CustomerMainPage extends javax.swing.JFrame {
         jLabelLTitle.setFont(new java.awt.Font("Forte", 1, 40)); // NOI18N
         jLabelLTitle.setText("Welcome to McGee !");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mcg logo.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelLTitle)
                 .addGap(410, 410, 410))
         );
@@ -272,10 +264,7 @@ public class CustomerMainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1)))
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -897,7 +886,6 @@ public class CustomerMainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel07;
     private javax.swing.JLabel jLabel08;
     private javax.swing.JLabel jLabel09;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

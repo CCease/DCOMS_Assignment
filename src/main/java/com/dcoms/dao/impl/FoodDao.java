@@ -1,7 +1,7 @@
-package main.java.com.dcoms.dao.impl;
+package com.dcoms.dao.impl;
 
-import main.java.com.dcoms.dao.IFoodDao;
-import main.java.com.dcoms.domain.Food;
+import com.dcoms.dao.IFoodDao;
+import com.dcoms.domain.Food;
 
 import java.util.List;
 

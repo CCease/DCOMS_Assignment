@@ -1,9 +1,9 @@
-package main.java.com.dcoms.server;
+package com.dcoms.server;
 
-import main.java.com.dcoms.dao.*;
-import main.java.com.dcoms.dao.impl.*;
-import main.java.com.dcoms.service.*;
-import main.java.com.dcoms.service.impl.*;
+import com.dcoms.dao.*;
+import com.dcoms.dao.impl.*;
+import com.dcoms.service.*;
+import com.dcoms.service.impl.*;
 
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;

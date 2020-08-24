@@ -1,7 +1,7 @@
-package main.java.com.dcoms.dao.impl;
+package com.dcoms.dao.impl;
 
-import main.java.com.dcoms.dao.IOrderDao;
-import main.java.com.dcoms.domain.Order;
+import com.dcoms.dao.IOrderDao;
+import com.dcoms.domain.Order;
 
 import java.util.List;
 

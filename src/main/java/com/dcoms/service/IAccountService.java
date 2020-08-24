@@ -1,11 +1,11 @@
-package main.java.com.dcoms.service;
+package com.dcoms.service;
 
-import main.java.com.dcoms.domain.Account;
+import com.dcoms.domain.Account;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
-import main.java.com.dcoms.dao.IAccountDao;
+import com.dcoms.dao.IAccountDao;
 
 public interface IAccountService extends Remote {
 
