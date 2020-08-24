@@ -7,6 +7,23 @@
 5. Implementation of Admin Logic
 
 
+
+
+
+## Package Introduction
+
+- **com.dcoms.client** - store client side ui and logic.
+- **com.dcoms.dao** - the file which execute the SQL statement,interacts with database and return data. ( For example. `public Account findAccountByUsername(String name)`) Account is a custom defined class.
+- **com.dcoms.domain** - The class use to store data retrieve from database, for example Account, Food, Order.
+- **com.dcoms.server** - servers side main function.
+- **com.dcoms.service** - the class with use DAO class to accomplish business logic. (For example. login, uses dao find account by username and compare password then return result)
+- **com.dcoms.utils** - utility, for example UUIDGenerator that use to generate UUID for new registered user.
+
+
+
+
+
+
 # Domain
 
 Object created to store data extract from database.
