@@ -1,8 +1,8 @@
-package main.java.com.dcoms.service.impl;
+package com.dcoms.service.impl;
 
-import main.java.com.dcoms.dao.IAccountDao;
-import main.java.com.dcoms.domain.Account;
-import main.java.com.dcoms.service.IAccountService;
+import com.dcoms.dao.IAccountDao;
+import com.dcoms.domain.Account;
+import com.dcoms.service.IAccountService;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
@@ -58,10 +58,14 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
     @Override
     public boolean login(Account account) throws RemoteException {
         Account databaseAccount = iAccountDao.findAccountByUsername(account.getPhoneNumber());
+        System.out.println(databaseAccount);
+        System.out.println(account.getPassword());
+        System.out.println(databaseAccount.getPassword());
+        System.out.println(account.getPassword().equals(databaseAccount.getPassword()));
         if (databaseAccount == null){
             return false;
         }
-        if (account.getPassword() == databaseAccount.getPassword()){
+        if (account.getPassword().equals(databaseAccount.getPassword())){
             return true;
         }
         else{
