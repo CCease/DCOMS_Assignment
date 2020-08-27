@@ -12,15 +12,18 @@ public class Main {
 
     public static void main(String[] args) {
         try{
-            /*IAccountService accountService = new AccountService((IAccountDao) new AccountDao());
+            IAccountService accountService = new AccountService();
+            accountService.setiAccountDao(new AccountDao());
             LocateRegistry.createRegistry(2000);
-            Naming.rebind("rmi://localhost:2000"+"/AccountService",accountService);*/
+            Naming.rebind("rmi://localhost:2000"+"/AccountService",accountService);
 
-            IFoodService foodService = new FoodService((IFoodDao) new FoodDao());
+            IFoodService foodService = new FoodService();
+            foodService.setIFoodDao(new FoodDao());
             LocateRegistry.createRegistry(2001);
             Naming.rebind("rmi://localhost:2001"+"/FoodService",foodService);
 
-            IOrderService orderService = new OrderService((IOrderDao) new OrderDao());
+            IOrderService orderService = new OrderService();
+            orderService.setIOrderDao(new OrderDao());
             LocateRegistry.createRegistry(2002);
             Naming.rebind("rmi://localhost:2002"+"/OrderService",orderService);
 

@@ -5,10 +5,6 @@ import com.dcoms.domain.Account;
 import com.dcoms.service.impl.AccountService;
 
 import java.awt.Color;
-import java.rmi.RemoteException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -280,7 +276,7 @@ public class Login extends javax.swing.JFrame {
             AccountService accountService = new AccountService();
             accountService.setiAccountDao(new AccountDao());
             Account account = new Account();
-            account.setPhoneNumber(username);
+            account.setUsername(username);
             account.setPassword(password);
             
             if(accountService.login(account)){

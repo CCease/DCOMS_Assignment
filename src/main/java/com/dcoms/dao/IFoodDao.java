@@ -8,7 +8,7 @@ public interface IFoodDao {
 
     List<Food> findAllFood();
 
-    Food findFoodById(Integer id);
+    Food findFoodById(String id);
 
     List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound);
 

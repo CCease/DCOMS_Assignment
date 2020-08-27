@@ -40,7 +40,7 @@ Creation of domain object use DomainBuilder.java in Utils package.
 private String id;
 private String firstName;
 private String lastName;
-private String phoneNumber;
+private String username;
 private String password;
 ```
 
@@ -140,19 +140,21 @@ The class use by client to do things.
 ## IAccountService
 
 ```
-List<Account> findAllAccount();
+List<Account> findAllAccount() throws RemoteException;
+    
+public void setiAccountDao(IAccountDao iAccountDao) throws RemoteException;
 
-Account findAccountById(String id);
+Account findAccountById(String id) throws RemoteException;
 
-boolean checkAccountByName(String fistName, String lastName);
+boolean checkAccountByName(String fistName, String lastName) throws RemoteException;
 
-void addAccount(Account account);
+void addAccount(Account account) throws RemoteException;
 
-void updateAccount(Account account);
+void updateAccount(Account account) throws RemoteException;
 
-void deleteAccount(Account account);
+void deleteAccount(Account account) throws RemoteException;
 
-boolean login(Account account);
+boolean login(Account account) throws RemoteException;
 ```
 
 
@@ -160,11 +162,16 @@ boolean login(Account account);
 ## IFoodService
 
 ```
-List<Food> findAllFood();
+    void setIFoodDao(IFoodDao iFoodDao) throws RemoteException;
 
-List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound);
+    List<Food> findAllFood() throws RemoteException;
 
-List<Food> findFoodByKeyword(String keyword);
+    List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound) throws RemoteException;
+
+    List<Food> findFoodByKeyword(String keyword) throws RemoteException;
+
+    Food findFoodById(String id) throws RemoteException;
+
 ```
 
 
@@ -172,15 +179,32 @@ List<Food> findFoodByKeyword(String keyword);
  ## IOrderService
 
 ```
-void orderComplete(Order order);
+    void setIOrderDao(IOrderDao iOrderDao) throws RemoteException ;
 
-void cancelOrder(Order order);
+    void orderComplete(Order order) throws RemoteException;
 
-Order findOrderById(String id);
+    void cancelOrder(Order order) throws RemoteException ;
 
-List<Order> findOrderByCustomerId(String id);
+    Order findOrderById(String id) throws RemoteException ;
+
+    List<Order> findOrderByCustomerId(String id) throws RemoteException ;
 ```
 
+
+##IKitchenService
+
+```
+
+    void addOrder(Order order) throws RemoteException;
+
+    void deleteOrder(Order order) throws RemoteException ;
+
+    Order getAndDeleteOrder(Order order) throws RemoteException ;
+
+    List<Order> getOnGoingOrder() throws RemoteException ;
+
+
+```
 
 
 

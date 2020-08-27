@@ -57,7 +57,7 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
 
     @Override
     public boolean login(Account account) throws RemoteException {
-        Account databaseAccount = iAccountDao.findAccountByUsername(account.getPhoneNumber());
+        Account databaseAccount = iAccountDao.findAccountByUsername(account.getUsername());
         System.out.println(databaseAccount);
         System.out.println(account.getPassword());
         System.out.println(databaseAccount.getPassword());

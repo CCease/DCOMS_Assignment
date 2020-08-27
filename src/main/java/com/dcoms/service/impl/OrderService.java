@@ -14,8 +14,12 @@ public class OrderService extends UnicastRemoteObject implements IOrderService {
 
     IOrderDao iOrderDao;
 
-    public OrderService(IOrderDao iOrderDao) throws RemoteException {
+    public OrderService() throws RemoteException {
         super();
+    }
+
+    @Override
+    public void setIOrderDao(IOrderDao iOrderDao) throws RemoteException {
         this.iOrderDao = iOrderDao;
     }
 

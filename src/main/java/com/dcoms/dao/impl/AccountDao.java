@@ -29,15 +29,11 @@ public class AccountDao implements IAccountDao {
         }catch (Exception e){
             e.printStackTrace();
         }
-        if (accountList == null){
-            return accountList;
-        }
-        return null;
-
+        return accountList;
     }
 
     @Override
-    public Account findAccountById(String id) {
+    public Account findAccountById(String id) {//TODO: Add check if multiple account found.
 
         PreparedStatement st;
         ResultSet rs;
@@ -46,6 +42,7 @@ public class AccountDao implements IAccountDao {
             st = My_CNX.getConnection().prepareStatement(query);
             st.setString(1, id);
             rs = st.executeQuery();
+
 
             if (rs.next()){
                 return accountDataHandler(rs);
@@ -60,7 +57,7 @@ public class AccountDao implements IAccountDao {
     }
 
     @Override
-    public Account findAccountByUsername(String username) {
+    public Account findAccountByUsername(String username) {//TODO: Add check if multiple account found.
 
         PreparedStatement st;
         ResultSet rs;
@@ -123,15 +120,15 @@ public class AccountDao implements IAccountDao {
 
     private Account accountDataHandler(ResultSet resultSet){
         try{
-            String id = resultSet.getString("id");
+            //String id = resultSet.getString("id");
             String first_name = resultSet.getString("first_name");
             String last_name = resultSet.getString("last_name");
             String ic = resultSet.getString("ic");
             String password = resultSet.getString("password");
-            String username = resultSet.getString("username"); //TODO: Check if this correct.
+            String username = resultSet.getString("username"); //TODO: Check if this correct. Sync with databse design.
 
             DomainBuilder domainBuilder = new DomainBuilder();
-            return domainBuilder.newAccount(id, first_name, last_name, password, username);
+            return domainBuilder.newAccount(ic, first_name, last_name, password, username);
             //password = password, phonenumber = username
         }catch (Exception e){
             e.printStackTrace();

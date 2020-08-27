@@ -12,23 +12,32 @@ public class FoodService extends UnicastRemoteObject implements IFoodService {
 
     private IFoodDao iFoodDao;
 
-    public FoodService(IFoodDao iFoodDao) throws RemoteException {
+    public FoodService() throws RemoteException  {
         super();
+    }
+
+    @Override
+    public void setIFoodDao(IFoodDao iFoodDao) throws RemoteException {
         this.iFoodDao = iFoodDao;
     }
 
     @Override
-    public List<Food> findAllFood() {
+    public List<Food> findAllFood() throws RemoteException {
         return iFoodDao.findAllFood();
     }
 
     @Override
-    public List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound) {
+    public List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound) throws RemoteException  {
         return iFoodDao.findFoodByPriceRange(upperBound,lowerBound);
     }
 
     @Override
-    public List<Food> findFoodByKeyword(String keyword) {
+    public List<Food> findFoodByKeyword(String keyword) throws RemoteException  {
         return iFoodDao.findFoodByKeyword(keyword);
+    }
+
+    @Override
+    public Food findFoodById(String id) throws RemoteException {
+        return iFoodDao.findFoodById(id);
     }
 }
