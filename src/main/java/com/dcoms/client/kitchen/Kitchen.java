@@ -75,10 +75,15 @@ public class Kitchen {
         String input = scanner.next();
 
         if (input != null){
-            kitchenService.deleteOrder(kitchenService.getOnGoingOrder().get(Integer.parseInt(input)));
-            //TODO: Add logic to notify customer, now only delete in the OnGoingOrder
-        }
+            try {
+                if(!kitchenService.completeOrder(kitchenService.getOnGoingOrder().get(Integer.parseInt(input)))){
+                    throw new RuntimeException("Error at server side. Order cannot be completed.");
+                };
+            }
+            catch (Exception e){
 
+            }
+        }
         System.out.println("\n Order "+input+" has completed.\n");
     }
 

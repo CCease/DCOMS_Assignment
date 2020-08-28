@@ -8,12 +8,18 @@ import java.util.List;
 
 public interface IKitchenService extends Remote {
 
+    void setiOrderService(IOrderService iOrderService);
+
+    List<Order> getOnGoingOrder() throws RemoteException;
+
     void addOrder(Order order) throws RemoteException;
 
-    void deleteOrder(Order order) throws RemoteException ;
+    void cancelOrder(Order order) throws RemoteException;
 
-    Order getAndDeleteOrder(Order order) throws RemoteException ;
+    boolean completeOrder(Order order) throws RemoteException;
 
-    List<Order> getOnGoingOrder() throws RemoteException ;
+    boolean isOrderComplete(Order order) throws RemoteException;
+
+
 
 }

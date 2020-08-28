@@ -27,6 +27,11 @@ public class Main {
             LocateRegistry.createRegistry(2002);
             Naming.rebind("rmi://localhost:2002"+"/OrderService",orderService);
 
+            IKitchenService kitchenService = new KitchenService();
+            kitchenService.setiOrderService(orderService);
+            LocateRegistry.createRegistry(2003);
+            Naming.rebind("rmi://localhost:2003"+"/KitchenService",kitchenService);
+
         }catch (Exception e){
             e.printStackTrace();
         }

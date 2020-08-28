@@ -62,7 +62,7 @@ public class Main {
         System.out.println(kitchenService.getOnGoingOrder());
 
         System.out.println("\n Get and delete Order2.\n ");
-        System.out.println(kitchenService.getAndDeleteOrder(order2));
+        System.out.println(kitchenService.completeOrder(order2));
         System.out.println("\n OnGoingOrder :" + kitchenService.getOnGoingOrder());
     }
 }

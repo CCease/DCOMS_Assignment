@@ -1,12 +1,32 @@
 # DCOMS_Assignment
 
-1. Client havent implement RMI
-2. DAO havent implement
-3. Login logic need add user type verication
-4. Implementation of Kitchen Logic (CLI Fastest way)
-5. Implementation of Admin Logic
+**Tasks :**
+
+1. Client haven't implement RMI
+2. DAO haven't implement
+3. Login logic need add user type verification
+5. Implementation of Admin Client side.
+5. **TESTING FOR ALL (Except login)**
 
 
+
+Port : in com.dcoms.server.Main.java
+
+Account Service
+
+`Naming.rebind("rmi://localhost:2000"+"/AccountService",accountService);`
+
+Food Service
+
+`Naming.rebind("rmi://localhost:2001"+"/FoodService",foodService);`
+
+Order Service
+
+`Naming.rebind("rmi://localhost:2002"+"/OrderService",orderService);`
+
+Kitchen Service
+
+`Naming.rebind("rmi://localhost:2003"+"/KitchenService",kitchenService);`
 
 
 
