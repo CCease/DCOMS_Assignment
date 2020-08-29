@@ -21,14 +21,14 @@ public class DomainBuilder {
         return order;
     }
 
-    public Account newAccount(String id, String firstname, String lastname, String password, String phoneNumber){
+    public Account newAccount(String id, String firstname, String lastname, String password, String username){
 
         Account account = new Account();
         account.setId(id);
         account.setFirstName(firstname);
         account.setLastName(lastname);
         account.setPassword(password);
-        account.setPhoneNumber(phoneNumber);
+        account.setUsername(username);
 
         return account;
     }

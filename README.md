@@ -1,12 +1,32 @@
 # DCOMS_Assignment
 
-1. Client havent implement RMI
-2. DAO havent implement
-3. Login logic need add user type verication
-4. Implementation of Kitchen Logic (CLI Fastest way)
-5. Implementation of Admin Logic
+**Tasks :**
+
+1. Client haven't implement RMI
+2. DAO haven't implement
+3. Login logic need add user type verification
+5. Implementation of Admin Client side.
+5. **TESTING FOR ALL (Except login)**
 
 
+
+Port : in com.dcoms.server.Main.java
+
+Account Service
+
+`Naming.rebind("rmi://localhost:2000"+"/AccountService",accountService);`
+
+Food Service
+
+`Naming.rebind("rmi://localhost:2001"+"/FoodService",foodService);`
+
+Order Service
+
+`Naming.rebind("rmi://localhost:2002"+"/OrderService",orderService);`
+
+Kitchen Service
+
+`Naming.rebind("rmi://localhost:2003"+"/KitchenService",kitchenService);`
 
 
 
@@ -40,7 +60,7 @@ Creation of domain object use DomainBuilder.java in Utils package.
 private String id;
 private String firstName;
 private String lastName;
-private String phoneNumber;
+private String username;
 private String password;
 ```
 
@@ -140,19 +160,21 @@ The class use by client to do things.
 ## IAccountService
 
 ```
-List<Account> findAllAccount();
+List<Account> findAllAccount() throws RemoteException;
+    
+public void setiAccountDao(IAccountDao iAccountDao) throws RemoteException;
 
-Account findAccountById(String id);
+Account findAccountById(String id) throws RemoteException;
 
-boolean checkAccountByName(String fistName, String lastName);
+boolean checkAccountByName(String fistName, String lastName) throws RemoteException;
 
-void addAccount(Account account);
+void addAccount(Account account) throws RemoteException;
 
-void updateAccount(Account account);
+void updateAccount(Account account) throws RemoteException;
 
-void deleteAccount(Account account);
+void deleteAccount(Account account) throws RemoteException;
 
-boolean login(Account account);
+boolean login(Account account) throws RemoteException;
 ```
 
 
@@ -160,11 +182,16 @@ boolean login(Account account);
 ## IFoodService
 
 ```
-List<Food> findAllFood();
+    void setIFoodDao(IFoodDao iFoodDao) throws RemoteException;
 
-List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound);
+    List<Food> findAllFood() throws RemoteException;
 
-List<Food> findFoodByKeyword(String keyword);
+    List<Food> findFoodByPriceRange(Double upperBound, Double lowerBound) throws RemoteException;
+
+    List<Food> findFoodByKeyword(String keyword) throws RemoteException;
+
+    Food findFoodById(String id) throws RemoteException;
+
 ```
 
 
@@ -172,15 +199,32 @@ List<Food> findFoodByKeyword(String keyword);
  ## IOrderService
 
 ```
-void orderComplete(Order order);
+    void setIOrderDao(IOrderDao iOrderDao) throws RemoteException ;
 
-void cancelOrder(Order order);
+    void orderComplete(Order order) throws RemoteException;
 
-Order findOrderById(String id);
+    void cancelOrder(Order order) throws RemoteException ;
 
-List<Order> findOrderByCustomerId(String id);
+    Order findOrderById(String id) throws RemoteException ;
+
+    List<Order> findOrderByCustomerId(String id) throws RemoteException ;
 ```
 
+
+##IKitchenService
+
+```
+
+    void addOrder(Order order) throws RemoteException;
+
+    void deleteOrder(Order order) throws RemoteException ;
+
+    Order getAndDeleteOrder(Order order) throws RemoteException ;
+
+    List<Order> getOnGoingOrder() throws RemoteException ;
+
+
+```
 
 
 

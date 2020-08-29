@@ -6,7 +6,7 @@ public class Account {
     private String id;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
+    private String username;
     private String password;
 
     public String getId() {
@@ -33,12 +33,12 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -55,7 +55,7 @@ public class Account {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
 }

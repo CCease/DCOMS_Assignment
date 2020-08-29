@@ -52,7 +52,7 @@ public class Food {
     @Override
     public String toString() {
         return "Food{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +

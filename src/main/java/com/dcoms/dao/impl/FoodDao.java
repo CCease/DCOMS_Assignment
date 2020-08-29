@@ -17,7 +17,7 @@ public class FoodDao implements IFoodDao {
     }
 
     @Override
-    public Food findFoodById(Integer id) {
+    public Food findFoodById(String id) {
         return null;
     }
 

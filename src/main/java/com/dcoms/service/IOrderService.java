@@ -1,20 +1,24 @@
 package com.dcoms.service;
 
+import com.dcoms.dao.IOrderDao;
 import com.dcoms.domain.Account;
 import com.dcoms.domain.Food;
 import com.dcoms.domain.Order;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IOrderService extends Remote {
 
-    void orderComplete(Order order);
+    void setIOrderDao(IOrderDao iOrderDao) throws RemoteException ;
 
-    void cancelOrder(Order order);
+    void orderComplete(Order order) throws RemoteException;
 
-    Order findOrderById(String id);
+    void cancelOrder(Order order) throws RemoteException ;
 
-    List<Order> findOrderByCustomerId(String id);
+    Order findOrderById(String id) throws RemoteException ;
+
+    List<Order> findOrderByCustomerId(String id) throws RemoteException ;
 
 }
