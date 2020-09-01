@@ -1,5 +1,7 @@
-package com.dcoms.client.customer.login;
+package com.dcoms.client.customer.mainpage;
 
+import com.dcoms.client.customer.login.My_CNX;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,9 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class Register extends javax.swing.JFrame {
+public class updateProfile extends javax.swing.JFrame {
 
-    public Register() {
+    public updateProfile() {
         initComponents();
     }
 
@@ -20,14 +22,13 @@ public class Register extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabelFName = new javax.swing.JLabel();
-        jLabelCPassword = new javax.swing.JLabel();
-        jButtonRegister = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
+        jLabelLTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelLTitle = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jLabelLName = new javax.swing.JLabel();
         jLabelIC = new javax.swing.JLabel();
@@ -35,7 +36,6 @@ public class Register extends javax.swing.JFrame {
         jLabelUsername = new javax.swing.JLabel();
         jTextFieldFName = new javax.swing.JTextField();
         jTextFieldLName = new javax.swing.JTextField();
-        jTextFieldCPassword = new javax.swing.JTextField();
         jTextFieldPassword = new javax.swing.JTextField();
         jTextFieldUsername = new javax.swing.JTextField();
         jTextFieldIC = new javax.swing.JTextField();
@@ -51,21 +51,18 @@ public class Register extends javax.swing.JFrame {
         jLabelFName.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 24)); // NOI18N
         jLabelFName.setText("First Name:");
 
-        jLabelCPassword.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 24)); // NOI18N
-        jLabelCPassword.setText("Confirm Password:");
-
-        jButtonRegister.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 1, 24)); // NOI18N
-        jButtonRegister.setText("Register");
-        jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUpdate.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 1, 24)); // NOI18N
+        jButtonUpdate.setText("Update");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegisterActionPerformed(evt);
+                jButtonUpdateActionPerformed(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/dcoms/images/mcgLogo.png"))); // NOI18N
-
         jLabelLTitle.setFont(new java.awt.Font("Forte", 1, 40)); // NOI18N
-        jLabelLTitle.setText("McGee Registration Site");
+        jLabelLTitle.setText("Update Profile");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/dcoms/images/mcgLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -75,25 +72,26 @@ public class Register extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel1)))
-                .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)))
                 .addComponent(jLabelLTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(177, 177, 177))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(16, 16, 16)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonBack.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 1, 24)); // NOI18N
@@ -120,8 +118,6 @@ public class Register extends javax.swing.JFrame {
 
         jTextFieldLName.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
 
-        jTextFieldCPassword.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
-
         jTextFieldPassword.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
 
         jTextFieldUsername.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
@@ -140,11 +136,12 @@ public class Register extends javax.swing.JFrame {
                         .addComponent(jLabelIC)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldIC))
+                    .addComponent(jSeparator2)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelFName)
@@ -156,16 +153,10 @@ public class Register extends javax.swing.JFrame {
                             .addComponent(jTextFieldUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                             .addComponent(jTextFieldPassword)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelCPassword)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                                .addComponent(jTextFieldLName, javax.swing.GroupLayout.Alignment.TRAILING))))
-                    .addComponent(jSeparator2))
+                        .addGap(0, 146, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                            .addComponent(jTextFieldLName, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(53, 53, 53))
         );
         jPanel1Layout.setVerticalGroup(
@@ -194,16 +185,12 @@ public class Register extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPassword)
                     .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPassword)
-                    .addComponent(jTextFieldCPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(32, 32, 32)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
@@ -220,7 +207,7 @@ public class Register extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -238,83 +225,57 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
 
         String fname = jTextFieldFName.getText();
         String lname = jTextFieldLName.getText();
-        String ic = jTextFieldIC.getText();
         String username = jTextFieldUsername.getText();
         String pass = jTextFieldPassword.getText();
-        
-        if (verifyFields()){
-            if(!checkUsername(username)){
-                PreparedStatement st;
-                String registerUserQuery = "INSERT INTO `users`(`first_name`, `last_name`, `ic`, `username`, `password`) VALUES (?,?,?,?,?)";
-                
-                try {
-                    st = My_CNX.getConnection().prepareStatement(registerUserQuery);
-                    st.setString(1, fname);
-                    st.setString(2, lname);
-                    st.setString(3, ic);
-                    st.setString(4, username);
-                    st.setString(5, pass);
-                    
-                    if(st.executeUpdate() != 0){
-                        JOptionPane.showMessageDialog(rootPane, "Your has been created !!!");
-                        Login login = new Login();
-                        login.setVisible(true);
-                        login.pack();
-                        login.setLocationRelativeTo(null);
-                        this.dispose();
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(rootPane, "Error: Check your information");
-                    }
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-                }               
+
+        if(!checkUsername(username)){
+            PreparedStatement st;
+            String registerUserQuery = "INSERT INTO `users`(`first_name`, `last_name`, `username`, `password`) VALUES (?,?,?,?)";
+
+            try {
+                st = My_CNX.getConnection().prepareStatement(registerUserQuery);
+                st.setString(1, fname);
+                st.setString(2, lname);
+                st.setString(3, username);
+                st.setString(4, pass);
+
+                if(st.executeUpdate() != 0){
+                    JOptionPane.showMessageDialog(rootPane, "Your has been created !!!");
+                    CustomerMainPage menu = new CustomerMainPage();
+                    menu.setVisible(true);
+                    menu.pack();
+                    menu.setLocationRelativeTo(null);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(rootPane, "Error: Check your information");
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(updateProfile.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jButtonRegisterActionPerformed
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
 
-        Login login = new Login();
-        login.setVisible(true);
-        login.pack();
-        login.setLocationRelativeTo(null);
+        CustomerMainPage menu = new CustomerMainPage();
+        try {
+            menu.createAndShowGUI();
+        } catch (IOException ex) {
+            Logger.getLogger(updateProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        menu.setVisible(true);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
         this.dispose();
-
     }//GEN-LAST:event_jButtonBackActionPerformed
-
-    public boolean verifyFields(){
-        
-        String fname = jTextFieldFName.getText();
-        String lname = jTextFieldLName.getText();
-        String ic = jTextFieldIC.getText();
-        String uname = jTextFieldUsername.getText();
-        String pass = jTextFieldPassword.getText();
-        String cpass = jTextFieldCPassword.getText();
-        
-        //check empty fields
-        if(fname.trim().equals("") || lname.trim().equals("") || ic.trim().equals("") || uname.trim().equals("") || pass.trim().equals("") || cpass.trim().equals("")){      
-            JOptionPane.showMessageDialog(rootPane, "All details are required to fill in. Don't leave it blank!");
-            return false;
-        }
-        
-        //check if the passwords are equal
-        else if(!pass.equals(cpass)){           
-            JOptionPane.showMessageDialog(rootPane, "Password doesn't match!");
-            return false;
-        }
-        
-        else{
-            return true;
-        }
-    }
     
-    //check if username already exists in database
+        //check if username already exists in database
     public boolean checkUsername(String username){
         
         PreparedStatement st;
@@ -335,12 +296,15 @@ public class Register extends javax.swing.JFrame {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(updateProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return username_exist;
     }
     
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -355,13 +319,13 @@ public class Register extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -369,17 +333,16 @@ public class Register extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new updateProfile().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonRegister;
+    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelCPassword;
     private javax.swing.JLabel jLabelFName;
     private javax.swing.JLabel jLabelIC;
     private javax.swing.JLabel jLabelLName;
@@ -391,7 +354,6 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextFieldCPassword;
     private javax.swing.JTextField jTextFieldFName;
     private javax.swing.JTextField jTextFieldIC;
     private javax.swing.JTextField jTextFieldLName;

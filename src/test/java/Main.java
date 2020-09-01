@@ -8,11 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.dcoms.utils.UUIDGenerator.getUUID;
+import java.io.File;
 
 public class Main {
 
     public static void main(String[] args) throws RemoteException {
-        kitchenServiceTest();
+
+    }
+    
+    private static boolean testFileExist(String filepath){
+        File tempFile = new File(filepath);
+        return tempFile.exists();
     }
 
     public static void kitchenServiceTest() throws RemoteException {
@@ -58,7 +64,7 @@ public class Main {
         System.out.println(kitchenService.getOnGoingOrder());
         System.out.println("\n Deleting order1.\n ");
 
-        kitchenService.deleteOrder(order1);
+        
         System.out.println(kitchenService.getOnGoingOrder());
 
         System.out.println("\n Get and delete Order2.\n ");
