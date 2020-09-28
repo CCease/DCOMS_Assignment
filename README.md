@@ -269,3 +269,20 @@ public class UUIDGenerator {
     }
 }
 ```
+
+## Database
+Account
+-username
+-ic
+-first name
+-last name
+-password
+
+Order
+-id;
+-private List<Food> foods HOW DO (serialize your list into a single value for storage, then deserialize it upon retrieval.)
+-timeCreated
+-timeResolved
+-customerID
+-isSuccess
+-isTakeAway

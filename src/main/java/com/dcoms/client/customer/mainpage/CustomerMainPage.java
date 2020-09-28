@@ -1,8 +1,33 @@
 package com.dcoms.client.customer.mainpage;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 public class CustomerMainPage extends javax.swing.JFrame {
@@ -10,816 +35,694 @@ public class CustomerMainPage extends javax.swing.JFrame {
     public CustomerMainPage() {
         
         initComponents(); 
-        
-        //initialize jTable 
-        DefaultTableModel dtm;
-        dtm = (DefaultTableModel)jTable1.getModel();
-        dtm.setColumnIdentifiers(new String[]{"Item", "Quantity", "Price (RM)", "Spinner"});
-        
-        //hide spinner
-        jTable1.getColumnModel().getColumn(3).setMinWidth(0); 															// column
-        jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-        
-        //inialize food images
-        //ImageIcon image01 = new ImageIcon("src/Images/Salad.png");
-        ImageIcon image01 = new ImageIcon("src/main/resources/images/Salad.png");
-        Image img1 = image01.getImage();
-        Image img2 = img1.getScaledInstance(jLabel01.getWidth(), jLabel01.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon a = new ImageIcon(img2);
-        jLabel01.setIcon(a);
-        
-        ImageIcon image02 = new ImageIcon("src/main/resources/images/JapanesePanNoodles.png");
-        Image img3 = image02.getImage();
-        Image img4 = img3.getScaledInstance(jLabel02.getWidth(), jLabel02.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon b = new ImageIcon(img4);
-        jLabel02.setIcon(b);
-        
-        ImageIcon image03 = new ImageIcon("src/main/resources/images/spaghetti.jpg");
-        Image img5 = image03.getImage();
-        Image img6 = img5.getScaledInstance(jLabel03.getWidth(), jLabel03.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon c = new ImageIcon(img6);
-        jLabel03.setIcon(c);
-        
-        ImageIcon image04 = new ImageIcon("src/main/resources/images/Macaroni.png");
-        Image img7 = image04.getImage();
-        Image img8 = img7.getScaledInstance(jLabel04.getWidth(), jLabel04.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon d = new ImageIcon(img8);
-        jLabel04.setIcon(d);
-        
-        ImageIcon image05 = new ImageIcon("src/main/resources/images/RamenNoodles.png");
-        Image img9 = image05.getImage();
-        Image img10 = img9.getScaledInstance(jLabel05.getWidth(), jLabel05.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon e = new ImageIcon(img10);
-        jLabel05.setIcon(e);
-        
-        ImageIcon image06 = new ImageIcon("src/main/resources/images/kidsSpaghetti.png");
-        Image img11 = image06.getImage();
-        Image img12 = img11.getScaledInstance(jLabel06.getWidth(), jLabel06.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon f = new ImageIcon(img12);
-        jLabel06.setIcon(f);
-        
-        ImageIcon image07 = new ImageIcon("src/main/resources/images/chickenRice.JPG");
-        Image img13 = image07.getImage();
-        Image img14 = img13.getScaledInstance(jLabel07.getWidth(), jLabel07.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon g = new ImageIcon(img14);
-        jLabel07.setIcon(g);
-        
-        ImageIcon image08 = new ImageIcon("src/main/resources/images/thaiFood.jpeg");
-        Image img15 = image08.getImage();
-        Image img16 = img15.getScaledInstance(jLabel08.getWidth(), jLabel08.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon h = new ImageIcon(img16);
-        jLabel08.setIcon(h);
-        
-        ImageIcon image09 = new ImageIcon("src/main/resources/images/vietnamFood.jpg");
-        Image img17 = image09.getImage();
-        Image img18 = img17.getScaledInstance(jLabel09.getWidth(), jLabel09.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon i = new ImageIcon(img18);
-        jLabel09.setIcon(i);
-        
-        ImageIcon image10 = new ImageIcon("src/main/resources/images/raspberry.jpg");
-        Image img19 = image10.getImage();
-        Image img20 = img19.getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon j = new ImageIcon(img20);
-        jLabel10.setIcon(j);
-        
-        ImageIcon image11 = new ImageIcon("src/main/resources/images/chocolatePudding.jpg");
-        Image img21 = image11.getImage();
-        Image img22 = img21.getScaledInstance(jLabel11.getWidth(), jLabel11.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon k = new ImageIcon(img22);
-        jLabel11.setIcon(k);
-        
-        ImageIcon image12 = new ImageIcon("src/main/resources/images/blueHawailan.jpg");
-        Image img23 = image12.getImage();
-        Image img24 = img23.getScaledInstance(jLabel12.getWidth(), jLabel12.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon l = new ImageIcon(img24);
-        jLabel12.setIcon(l);
-        
-        ImageIcon image13 = new ImageIcon("src/main/resources/images/Pina.jpg");
-        Image img25 = image13.getImage();
-        Image img26 = img25.getScaledInstance(jLabel13.getWidth(), jLabel13.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon m = new ImageIcon(img26);
-        jLabel13.setIcon(m);
-        
-        ImageIcon image14 = new ImageIcon("src/main/resources/images/lemonIce.jpg");
-        Image img27 = image14.getImage();
-        Image img28 = img27.getScaledInstance(jLabel14.getWidth(), jLabel14.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon n = new ImageIcon(img28);
-        jLabel14.setIcon(n);
-        
-        ImageIcon image15 = new ImageIcon("src/main/resources/images/strawberryCake.jpg");
-        Image img29 = image15.getImage();
-        Image img30 = img29.getScaledInstance(jLabel15.getWidth(), jLabel15.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon o = new ImageIcon(img30);
-        jLabel15.setIcon(o);
-        
-        ImageIcon image16 = new ImageIcon("src/main/resources/images/chocolateCake.jpg");
-        Image img31 = image16.getImage();
-        Image img32 = img31.getScaledInstance(jLabel16.getWidth(), jLabel16.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon p = new ImageIcon(img32);
-        jLabel16.setIcon(p);
-        
+
     }
     
-    public void foodSpinner(){
-        DefaultTableModel dtm;
-        dtm = (DefaultTableModel)jTable1.getModel();
-        dtm.setColumnIdentifiers(new String[]{"Item", "Quantity", "Price (RM)", "Spinner"});      
+    static private JFrame frame;
+    static private JButton backButton, orderButton, profileButton;
+    static private JTextField textField1, textField2, textField3;
+    static private JRadioButton radioButton1, radioButton2;
+    static private GridBagConstraints gbc;
+    private JTable table;
+    DefaultTableModel dtm;
+    Double[] price;
+    Double[] priceDrinks;
+    Double[] priceDesserts;
+    double totalPrice = 0;
+    double p1, p2, p3, p4, p5, p6, p7, p8, p9;
+    double d1, d2, d3, d4, d5;
+    double de1, de2;
+
+    private JSpinner[] numSpinner;
+    static private JLabel[] foodLabel;
+    static private JLabel[] foodImage;
+    private File[] file;
+
+    private JSpinner[] numSpinnerDrinks;
+    static private JLabel[] drinkLabel;
+    static private JLabel[] drinkImage;
+    private File[] fileDrinks;
+
+    private JSpinner[] numSpinnerDesserts;
+    static private JLabel[] dessertLabel;
+    static private JLabel[] dessertImage;
+    private File[] fileDesserts;
+
+    private static final int ELEMENTS = 9;
+    private static final int DRINK_ELEMENTS = 5;
+    private static final int DESSERT_ELEMENTS = 2;
+
+    double total = 0;
+    double food1, food2, food3, food4, food5, food6, food7, food8, food9;
+    double drink1, drink2, drink3, drink4, drink5;
+    double pr, pr1;
+
+    double tax, net;
+    double totalForFoods;
+    double totalForDrinks;
+    double totalForDesserts;
+    
+    //Set 2 decimal places
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+    
+    //Set font
+    Font f1 = new Font("Forte",Font.BOLD,40);
+    Font f2 = new Font("Adobe Caslon Pro",Font.PLAIN,18);
+    Font f3 = new Font("Adobe Caslon Pro",Font.BOLD,18);
+
+    public void createAndShowGUI() throws IOException {
         
-        JSpinner[] numSpinner;
-        int ELEMENTS = 15;
-        double food1, food2, food3, food4, food5, food6, food7, food8, food9;
+        //Design frame
+        frame = new JFrame("Main Menu");
+        frame.setBounds(100, 100, 1150, 770);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setBackground(new Color(153,153,153));
+        frame.getContentPane().setLayout(null);
+        frame.setLocationRelativeTo(null);
         
-        //set food price
-        double[] price = new double[ELEMENTS];
-        price[0] = 3.50;
-        price[1] = 4.50;
-        price[2] = 3.70;
-        price[3] = 4.50;
-        price[4] = 5.50;
-        price[5] = 4.00;
-        price[6] = 3.50;
-        price[7] = 6.50;
-        price[8] = 6.50;
-        price[9] = 3.50;
-        price[10] = 4.50;
-        price[11] = 3.00;
-        price[12] = 5.00;
-        price[13] = 3.00;
-        price[14] = 2.50;
-        price[15] = 3.00;
+        //Design labels
+        ImageIcon imageIcon = new ImageIcon("src/main/java/com/dcoms/images/mcgLogo.png");
+        JLabel lblLogo = new JLabel(imageIcon);
+        lblLogo.setBounds(20, 10, 50, 50);
+        frame.getContentPane().add(lblLogo);
         
-        numSpinner = new JSpinner[ELEMENTS];
+        ImageIcon icon = new ImageIcon("src/main/java/com/dcoms/images/Profile.png");
+        JLabel lblProfile = new JLabel(icon);
+        lblProfile.setBounds(1050, 10, 60, 60);
+        frame.getContentPane().add(lblProfile);
         
-        /*for (int i = 0; i < ELEMENTS; i++) {
-            numSpinner[i].addChangeListener(listener);
-        }*/
-        /*int quantity = (int) ((JSpinner) evt.getSource()).getValue();
-        int rows = jTable1.getRowCount();
-        for (int row = 0; row < rows; row++) {
-            if (dtm.getValueAt(row, 3) == evt.getSource()) {
-                if (dtm.getValueAt(row, 0).equals("Salad")) {
-                        dtm.setValueAt(quantity, row, 1); // obj, row, column
-                        //dtm.setValueAt(p1 * quantity, row, 2);
-                        //food1 = p1 * quantity;
+        JLabel lblTitle = new JLabel("Welcome to McGee !");
+        lblTitle.setBounds(90, 10, 390, 55);
+        lblTitle.setFont(f1);
+        frame.getContentPane().add(lblTitle);
+        
+        JLabel lblFoodOrdered = new JLabel("Ordered Food: ");
+        lblFoodOrdered.setBounds(700, 80, 150, 30);
+        lblFoodOrdered.setFont(f2);
+        frame.getContentPane().add(lblFoodOrdered);
+        
+        //Design table
+        dtm = new DefaultTableModel(0, 0) {
+            @Override
+            //make jTable non-editable
+            public boolean isCellEditable(int row, int column) {
+             //all cells false
+            return false;
+            }
+        };
+        final String header[] = new String[] { "Item", "Qty", "Price", "Spinner" };
+        dtm.setColumnIdentifiers(header);
+        dtm.addRow(header);
+        table = new JTable();
+        table.setModel(dtm);
+        table.setBounds(700, 120, 1, 1); // int x, int y, int width, int height
+        table.setSize(400, 250); // width,height
+        table.setFont(f2);
+        table.setRowHeight(25);
+        table.getColumnModel().getColumn(0).setPreferredWidth(180);
+        table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        table.getColumnModel().getColumn(2).setPreferredWidth(50);
+        table.getColumnModel().getColumn(3).setMinWidth(0); // hide spinner column
+        table.getColumnModel().getColumn(3).setMaxWidth(0); // hide spinner column
+        table.setShowGrid(false); // remove cell boarder
+        frame.getContentPane().add(table);
+        
+        //Design label
+        JLabel lblOption = new JLabel("Please select an option:");
+        lblOption.setBounds(700, 550, 200, 20);
+        lblOption.setFont(f2);
+        frame.getContentPane().add(lblOption);
+        
+        //Sub total
+        JLabel lblsubTotal = new JLabel("Sub Total:");
+        lblsubTotal.setBounds(700, 395, 100, 20);
+        lblsubTotal.setFont(f2);
+        frame.getContentPane().add(lblsubTotal);
+        textField1 = new JTextField();
+        textField1.setBounds(830, 390, 120, 35);
+        textField1.setFont(f2);
+        frame.getContentPane().add(textField1);
+        textField1.setColumns(15);
+        
+        //Service tax
+        JLabel lblTax = new JLabel("Service Tax 6%:");
+        lblTax.setBounds(700, 445, 150, 20);
+        lblTax.setFont(f2);
+        frame.getContentPane().add(lblTax);
+        textField2 = new JTextField();
+        textField2.setBounds(830, 440, 120, 35);
+        textField2.setFont(f2);
+        frame.getContentPane().add(textField2);
+        textField2.setColumns(15);
+        
+        //Net total
+        JLabel lblnetTotal = new JLabel("Net Order:");
+        lblnetTotal.setBounds(700, 495, 100, 20);
+        lblnetTotal.setFont(f2);
+        frame.getContentPane().add(lblnetTotal);
+        textField3 = new JTextField();
+        textField3.setBounds(830, 490, 120, 35);
+        textField3.setFont(f2);
+        frame.getContentPane().add(textField3);
+        textField3.setColumns(15);
+        
+        //Design buttons
+        orderButton = new JButton("Order");
+        orderButton.setBounds(700, 650, 120, 40);
+        orderButton.setFont(f3);
+        orderButton.setBackground(Color.yellow);
+        frame.getContentPane().add(orderButton);
+        
+        backButton = new JButton("Back");
+        backButton.setBounds(980, 650, 120, 40);
+        backButton.setFont(f3);
+        frame.getContentPane().add(backButton);
+        
+        profileButton = new JButton("Update Profile");
+        profileButton.setBounds(880, 20, 150, 40);
+        profileButton.setFont(f3);
+        profileButton.setBackground(Color.BLACK);
+        profileButton.setForeground(Color.WHITE);
+        frame.getContentPane().add(profileButton);
+        
+        //Design Radio Buttons
+        radioButton1 = new JRadioButton("Dine-In", true);
+        radioButton1.setFont(f2);
+        radioButton2 = new JRadioButton("Take Away");
+        radioButton2.setFont(f2);
+        
+        ButtonGroup bgroup = new ButtonGroup();
+        bgroup.add(radioButton1);
+        bgroup.add(radioButton2);
+        
+        JPanel radioPanel = new JPanel();
+        radioPanel.setLayout(new GridLayout(1, 2));
+        radioPanel.add(radioButton1);
+        radioPanel.add(radioButton2);
+        radioPanel.setBounds(700, 580, 260, 40);
+        radioPanel.setFont(f2);
+        frame.getContentPane().add(radioPanel);
+        
+        //Design Tabbed Pane
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        addIt(tabbedPane, "Foods");
+        addIt1(tabbedPane, "Drinks");
+        addIt2(tabbedPane, "Desserts");
+        tabbedPane.setBounds(18, 80, 650, 630);
+        tabbedPane.setFont(f2);
+        frame.getContentPane().add(tabbedPane);
+        frame.setVisible(true);
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                com.dcoms.client.customer.login.Login log = new com.dcoms.client.customer.login.Login();
+                log.setLocationRelativeTo(null);
+                log.setVisible(true);
+                frame.dispose();
+            }
+        });
+
+        orderButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (textField1.getText().equals("") || textField1.getText().equals("RM 0")) {
+                    JOptionPane.showMessageDialog(rootPane, "You have not ordered anything yet !");
+                } 
+                else {
+                    //type your code here:
                 }
-            //}*/
+            }
+        });
+        
+        profileButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                updateProfile up = new updateProfile();
+                up.setLocationRelativeTo(null);
+                up.setVisible(true);
+                frame.dispose();
+            }
+        });
     }
-          
+    void addIt(JTabbedPane tabbedPane, String text) throws IOException {
+            JPanel panel = new JPanel(new GridBagLayout());
+            gbc = new GridBagConstraints(); // getting constraints for the specified component
+            gbc.insets = new Insets(10, 0, 0, 0);
+            foodImage = new JLabel[ELEMENTS];
+            foodLabel = new JLabel[ELEMENTS];
+            numSpinner = new JSpinner[ELEMENTS];
+            file = new File[ELEMENTS];
+            price = new Double[ELEMENTS];
+            
+            file[0] = new File("src/main/java/com/dcoms/images/Salad.png");
+            file[1] = new File("src/main/java/com/dcoms/images/JapanesePanNoodles.png");
+            file[2] = new File("src/main/java/com/dcoms/images/spaghetti.jpg");
+            file[3] = new File("src/main/java/com/dcoms/images/Macaroni.png");
+            file[4] = new File("src/main/java/com/dcoms/images/RamenNoodles.png");
+            file[5] = new File("src/main/java/com/dcoms/images/kidsSpaghetti.png");
+            file[6] = new File("src/main/java/com/dcoms/images/chickenRice.JPG");
+            file[7] = new File("src/main/java/com/dcoms/images/thaiFood.jpeg");
+            file[8] = new File("src/main/java/com/dcoms/images/vietnamFood.jpg");
+            foodLabel[0] = new JLabel("Salad");
+            foodLabel[1] = new JLabel("Japanese Noodles");
+            foodLabel[2] = new JLabel("Spaghetti");
+            foodLabel[3] = new JLabel("Macaroni");
+            foodLabel[4] = new JLabel("Ramen Noodles");
+            foodLabel[5] = new JLabel("Kids Spaghetti");
+            foodLabel[6] = new JLabel("Chicken Rice");
+            foodLabel[7] = new JLabel("Thai Food");
+            foodLabel[8] = new JLabel("Vietnam Food");
+            price[0] = 13.50;
+            price[1] = 14.50;
+            price[2] = 13.70;
+            price[3] = 14.50;
+            price[4] = 15.50;
+            price[5] = 14.00;
+            price[6] = 13.50;
+            price[7] = 16.50;
+            price[8] = 16.50;
+            for (int i = 0; i < ELEMENTS; i++) {
+                    Image image = ImageIO.read(file[i]);
+                    Image imageScaled = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    ImageIcon imageIcon = new ImageIcon(imageScaled);
+                    SpinnerNumberModel spnummodel = new SpinnerNumberModel(0, 0, 10, 1); // value,minimum,maximum,stepSize
+                    numSpinner[i] = new JSpinner(spnummodel);
+                    numSpinner[i].addChangeListener(listener);
+                    foodImage[i] = new JLabel(imageIcon);
+            }
+            gbc.gridx = 0; // gridx 0 represent the most left
+            for (int i = 0; i < ELEMENTS; i++) {
+                    if (i % 3 == 0) {
+                            gbc.gridy += 2;
+                            gbc.gridx = 0;
+                    }
+                    panel.add(foodImage[i], gbc);
+                    gbc.gridy++; // gridy---> add one row,for foodLabel
+                    panel.add(foodLabel[i], gbc);
+                    foodLabel[i].setFont(f2);
+                    gbc.gridy--; // remove the row
+                    gbc.gridx++; // move to next column
+                    panel.add(numSpinner[i], gbc);
+                    gbc.gridx++; // move to next column
+                    tabbedPane.addTab(text, panel);
+            }
+    }
+
+    void addIt2(JTabbedPane tabbedPane, String text) throws IOException {
+            JPanel panel = new JPanel(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            dessertImage = new JLabel[DESSERT_ELEMENTS];
+            dessertLabel = new JLabel[DESSERT_ELEMENTS];
+            numSpinnerDesserts = new JSpinner[DESSERT_ELEMENTS];
+            priceDesserts = new Double[DESSERT_ELEMENTS];
+
+            fileDesserts = new File[DESSERT_ELEMENTS];
+            fileDesserts[0] = new File("src/main/java/com/dcoms/images/strawberryCake.jpg");
+            fileDesserts[1] = new File("src/main/java/com/dcoms/images/chocolateCake.jpg");
+
+            dessertLabel[0] = new JLabel("Strawberry Cake");
+            dessertLabel[1] = new JLabel("Chocolate Cake");
+
+            priceDesserts[0] = 12.50;
+            priceDesserts[1] = 13.00;
+
+            for (int i = 0; i < DESSERT_ELEMENTS; i++) {
+                    Image image = ImageIO.read(fileDesserts[i]);
+                    Image imageScaled = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    ImageIcon imageIcon = new ImageIcon(imageScaled);
+                    SpinnerNumberModel spnummodel = new SpinnerNumberModel(0, 0, 10, 1); // value,minimum,maximum,stepSize
+                    numSpinnerDesserts[i] = new JSpinner(spnummodel);
+                    numSpinnerDesserts[i].addChangeListener(listenerForDesserts);
+                    dessertImage[i] = new JLabel(imageIcon);
+            }
+            gbc.gridx = 0; // gridx 0 represent the most left
+            gbc.insets = new Insets(10, 5, 0, 0); // top,left,bottom,right
+            for (int i = 0; i < DESSERT_ELEMENTS; i++) {
+                    if (i % 3 == 0) {
+                            gbc.gridx = 0;
+                            gbc.gridy += 2;
+                    }
+                    panel.add(dessertImage[i], gbc);
+                    gbc.gridy++; // gridy---> add one row,for foodLabel
+                    panel.add(dessertLabel[i], gbc);
+                    dessertLabel[i].setFont(f2);
+                    gbc.gridy--; // remove the row
+                    gbc.gridx++; // move to next column
+                    panel.add(numSpinnerDesserts[i], gbc);
+                    gbc.gridx++; // move to next column
+                    tabbedPane.addTab(text, panel);
+            }
+
+    }
+
+    void addIt1(JTabbedPane tabbedPane, String text) throws IOException {
+            JPanel panel = new JPanel(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            drinkImage = new JLabel[DRINK_ELEMENTS];
+            drinkLabel = new JLabel[DRINK_ELEMENTS];
+            numSpinnerDrinks = new JSpinner[DRINK_ELEMENTS];
+            priceDrinks = new Double[DRINK_ELEMENTS];
+
+            fileDrinks = new File[DRINK_ELEMENTS];
+            fileDrinks[0] = new File("src/main/java/com/dcoms/images/raspberry.jpg");
+            fileDrinks[1] = new File("src/main/java/com/dcoms/images/chocolatePudding.jpg");
+            fileDrinks[2] = new File("src/main/java/com/dcoms/images/blueHawailan.jpg");
+            fileDrinks[3] = new File("src/main/java/com/dcoms/images/Pina.jpg");
+            fileDrinks[4] = new File("src/main/java/com/dcoms/images/lemonIce.jpg");
+
+            drinkLabel[0] = new JLabel("Raspberry");
+            drinkLabel[1] = new JLabel("Chocolate Pudding");
+            drinkLabel[2] = new JLabel("Blue Hawailan");
+            drinkLabel[3] = new JLabel("Pina");
+            drinkLabel[4] = new JLabel("Lemon Ice");
+
+            priceDrinks[0] = 13.50;
+            priceDrinks[1] = 14.50;
+            priceDrinks[2] = 13.00;
+            priceDrinks[3] = 15.00;
+            priceDrinks[4] = 13.00;
+
+            for (int i = 0; i < DRINK_ELEMENTS; i++) {
+                    Image image = ImageIO.read(fileDrinks[i]);
+                    Image imageScaled = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    ImageIcon imageIcon = new ImageIcon(imageScaled);
+                    SpinnerNumberModel spnummodel = new SpinnerNumberModel(0, 0, 10, 1); // value,minimum,maximum,stepSize
+                    numSpinnerDrinks[i] = new JSpinner(spnummodel);
+                    numSpinnerDrinks[i].addChangeListener(listenerForDrinks);
+                    drinkImage[i] = new JLabel(imageIcon);
+            }
+            gbc.gridx = 0; // gridx 0 represent the most left
+            gbc.insets = new Insets(10, 5, 0, 0); // top,left,bottom,right
+            for (int i = 0; i < DRINK_ELEMENTS; i++) {
+                    if (i % 3 == 0) {
+                            gbc.gridx = 0;
+                            gbc.gridy += 2;
+                    }
+                    panel.add(drinkImage[i], gbc);
+                    gbc.gridy++; // gridy---> add one row,for foodLabel
+                    panel.add(drinkLabel[i], gbc);
+                    drinkLabel[i].setFont(f2);
+                    gbc.gridy--; // remove the row
+                    gbc.gridx++; // move to next column
+                    panel.add(numSpinnerDrinks[i], gbc);
+                    gbc.gridx++; // move to next column
+                    tabbedPane.addTab(text, panel);
+            }
+    }
+
+    ChangeListener listener = new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+
+                    final int quantity = (int) ((JSpinner) e.getSource()).getValue();
+                    final int rows = table.getRowCount();
+                    for (int row = 0; row < rows; row++) {
+                            if (dtm.getValueAt(row, 3) == e.getSource()) {
+                                    if (dtm.getValueAt(row, 0).equals("Salad")) {
+                                            dtm.setValueAt(quantity, row, 1); // obj, row, column
+                                            dtm.setValueAt(p1 * quantity, row, 2);
+                                            food1 = p1 * quantity;
+
+                                    } else if (dtm.getValueAt(row, 0).equals("Japanese Noodles")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(p2 * quantity, row, 2);
+                                            food2 = p2 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Spaghetti")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(p3 * quantity, row, 2);
+                                            food3 = p3 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Macaroni")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(p4 * quantity, row, 2);
+                                            food4 = p4 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Ramen Noodles")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(p5 * quantity, row, 2);
+                                            food5 = p5 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Kids Spaghetti")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(p6 * quantity, row, 2);
+                                            food6 = p6 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Chicken Rice")) {
+                                            dtm.setValueAt(quantity, row, 1); 
+                                            dtm.setValueAt(p7 * quantity, row, 2);
+                                            food7 = p7 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Thai Food")) {
+                                            dtm.setValueAt(quantity, row, 1); 
+                                            dtm.setValueAt(p8 * quantity, row, 2);
+                                            food8 = p8 * quantity;
+                                            
+                                    } else if (dtm.getValueAt(row, 0).equals("Vietnam Food")) {
+                                            dtm.setValueAt(quantity, row, 1); 
+                                            dtm.setValueAt(p9 * quantity, row, 2);
+                                            food9 = p9 * quantity;
+                                    }
+
+                                    if (quantity == 0) {
+                                            dtm.removeRow(row);
+                                    }
+                                    totalForFoods = food1 + food2 + food3 + food4 + food5 + food6 + food7 + food8 + food9;
+                                    total = totalForFoods + totalForDrinks + totalForDesserts;
+                                    textField1.setText("RM " + df2.format(total));
+                                    tax = total * 0.06;
+                                    textField2.setText("RM " + df2.format(tax));
+                                    net = total + tax;
+                                    textField3.setText("RM " + df2.format(net));
+                                    return;
+                            }
+                    }
+
+                    // there was no row with this JSpinner, so we have to add it
+                    for (int i = 0; i < ELEMENTS; i++) {
+                            // looking for the "clicked" JSpinner
+                            if (numSpinner[i] == e.getSource()) {
+                                    totalPrice = price[i];
+                                    switch (foodLabel[i].getText()) {
+                                    case "Salad":
+                                            p1 = 13.50;
+                                            food1 = p1;
+                                            break;
+                                    case "Japanese Noodles":
+                                            p2 = 14.50;
+                                            food2 = p2;
+                                            break;
+                                    case "Spaghetti":
+                                            p3 = 13.70;
+                                            food3 = p3;
+                                            break;
+                                    case "Macaroni":
+                                            p4 = 14.50;
+                                            food4 = p4;
+                                            break;
+                                    case "Ramen Noodles":
+                                            p5 = 15.50;
+                                            food5 = p5;
+                                            break;
+                                    case "Kids Spaghetti":
+                                            p6 = 14.00;
+                                            food6 = p6;
+                                            break;
+                                    case "Chicken Rice":
+                                            p7 = 13.50;
+                                            food7 = p7;
+                                            break;
+                                    case "Thai Food":
+                                            p8 = 16.50;
+                                            food8 = p8;
+                                            break;
+                                    case "Vietnam Food":
+                                            p9 = 16.50;
+                                            food9 = p9;
+                                            break;
+                                    }
+                                    totalForFoods = food1 + food2 + food3 + food4 + food5 + food6 + food7 + food8 + food9;
+                                    total = totalForFoods + totalForDrinks + totalForDesserts;
+                                    textField1.setText("RM" + df2.format(total));
+                                    tax = total * 0.06;
+                                    textField2.setText("RM" + df2.format(tax));
+                                    net = total + tax;
+                                    textField3.setText("RM" + df2.format(net));
+                                    dtm.addRow(new Object[] { foodLabel[i].getText(), quantity, totalPrice, numSpinner[i] });
+                                    return;
+                            }
+
+                    }
+            }
+    };
+
+    ChangeListener listenerForDesserts = new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+
+                    final int quantity = (int) ((JSpinner) e.getSource()).getValue();
+                    final int rows = table.getRowCount();
+
+                    for (int row = 0; row < rows; row++) {
+                            if (dtm.getValueAt(row, 3) == e.getSource()) {
+                                    if (dtm.getValueAt(row, 0).equals("Strawberry Cake")) {
+                                            dtm.setValueAt(quantity, row, 1); // obj, row,
+                                            pr = de1 * quantity; // column
+                                            dtm.setValueAt(de1 * quantity, row, 2);
+                                    } else if (dtm.getValueAt(row, 0).equals("Chocolate Cake")) {
+                                            dtm.setValueAt(quantity, row, 1); // obj, row, // column
+                                            dtm.setValueAt(de2 * quantity, row, 2);
+                                            pr1 = de2 * quantity;
+                                    }
+                                    if (quantity == 0) {
+                                            dtm.removeRow(row);
+                                    }
+                                    totalForDesserts = pr + pr1;
+                                    total = totalForFoods + totalForDrinks + totalForDesserts;
+                                    textField1.setText("RM " + df2.format(total));
+                                    tax = total * 0.06;
+                                    textField2.setText("RM " + df2.format(tax));
+                                    net = total + tax;
+                                    textField3.setText("RM " + df2.format(net));
+                                    return;
+                            }
+                    }
+
+                    // there was no row with this JSpinner, so we have to add it
+                    for (int i = 0; i < DESSERT_ELEMENTS; i++) {
+                            // looking for the "clicked" JSpinner
+                            if (numSpinnerDesserts[i] == e.getSource()) {
+                                    totalPrice = priceDesserts[i];
+                                    switch (dessertLabel[i].getText()) {
+                                    case "Strawberry Cake":
+                                            de1 = 12.50;
+                                            pr = de1;
+                                            break;
+                                    case "Chocolate Cake":
+                                            de2 = 13.00;
+                                            pr1 = de2;
+                                            break;
+                                    }
+                                    totalForDesserts = pr + pr1;
+                                    total = totalForFoods + totalForDrinks + totalForDesserts;
+                                    textField1.setText("RM " + df2.format(total));
+                                    tax = total * 0.06;
+                                    textField2.setText("RM " + df2.format(tax));
+                                    net = total + tax;
+                                    textField3.setText("RM " + df2.format(net));
+                                    dtm.addRow(new Object[] { dessertLabel[i].getText(), quantity, totalPrice, numSpinnerDesserts[i] });
+                                    return;
+                            }
+
+                    }
+            }
+
+    };
+
+    ChangeListener listenerForDrinks = new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+
+                    final int quantity = (int) ((JSpinner) e.getSource()).getValue();
+                    final int rows = table.getRowCount();
+                    for (int row = 0; row < rows; row++) {
+                            if (dtm.getValueAt(row, 3) == e.getSource()) {
+                                    if (dtm.getValueAt(row, 0).equals("Raspberry")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(d1 * quantity, row, 2);
+                                            drink1 = d1 * quantity;
+
+                                    } else if (dtm.getValueAt(row, 0).equals("Chocolate Pudding")) {
+                                            dtm.setValueAt(quantity, row, 1); // obj, row, // column
+                                            dtm.setValueAt(d2 * quantity, row, 2);
+                                            drink2 = d2 * quantity;
+
+                                    } else if (dtm.getValueAt(row, 0).equals("Blue Hawailan")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(d3 * quantity, row, 2);
+                                            drink3 = d3 * quantity;
+
+                                    } else if (dtm.getValueAt(row, 0).equals("Pina")) {
+                                            dtm.setValueAt(quantity, row, 1);
+                                            dtm.setValueAt(d4 * quantity, row, 2);
+                                            drink4 = d4 * quantity;
+
+                                    } else if (dtm.getValueAt(row, 0).equals("Lemon Ice")) {
+                                            dtm.setValueAt(quantity, row, 1); 
+                                            dtm.setValueAt(d5 * quantity, row, 2);
+                                            drink5 = d5 * quantity;
+                                    }
+                                    if (quantity == 0) {
+                                            dtm.removeRow(row);
+                                    }
+                                    totalForDrinks = drink1 + drink2 + drink3 + drink4 + drink5;
+                                    total = totalForFoods + totalForDrinks + totalForDesserts;
+                                    textField1.setText("RM " + df2.format(total));
+                                    tax = total * 0.06;
+                                    textField2.setText("RM " + df2.format(tax));
+                                    net = total + tax;
+                                    textField3.setText("RM " + df2.format(net));
+                                    return;
+                            }
+                    }
+
+                    // there was no row with this JSpinner, so we have to add it
+                    for (int i = 0; i < DRINK_ELEMENTS; i++) {
+                            // looking for the "clicked" JSpinner
+                            if (numSpinnerDrinks[i] == e.getSource()) {
+                                    totalPrice = priceDrinks[i];
+                                    switch (drinkLabel[i].getText()) {
+                                    case "Raspberry":
+                                            d1 = 13.50;
+                                            drink1 = d1;
+                                            break;
+                                    case "Chocolate Pudding":
+                                            d2 = 14.50;
+                                            drink2 = d2;
+                                            break;
+                                    case "Blue Hawailan":
+                                            d3 = 13.00;
+                                            drink3 = d3;
+                                            break;
+                                    case "Pina":
+                                            d4 = 15.00;
+                                            drink4 = d4;
+                                            break;
+                                    case "Lemon Ice":
+                                            d5 = 13.00;
+                                            drink5 = d5;
+                                            break;
+                                    }
+                                    totalForDrinks = drink1 + drink2 + drink3 + drink4 + drink5;
+                                    total = totalForFoods + totalForDrinks + totalForDesserts;
+                                    textField1.setText("RM " + df2.format(total));
+                                    tax = total * 0.06;
+                                    textField2.setText("RM " + df2.format(tax));
+                                    net = total + tax;
+                                    textField3.setText("RM " + df2.format(net));
+                                    dtm.addRow(new Object[] { drinkLabel[i].getText(), quantity, totalPrice, numSpinnerDrinks[i] });
+                                    return;
+                            }
+                    }
+            }
+    };
+
+    public void setVisible(boolean b) {}
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabelLTitle = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTabbedPaneMenu = new javax.swing.JTabbedPane();
-        jPanelFoods = new javax.swing.JPanel();
-        jLabel01 = new javax.swing.JLabel();
-        jLabel001 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jLabel05 = new javax.swing.JLabel();
-        jLabel06 = new javax.swing.JLabel();
-        jLabel04 = new javax.swing.JLabel();
-        jLabel02 = new javax.swing.JLabel();
-        jLabel03 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel002 = new javax.swing.JLabel();
-        jLabel003 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jLabel09 = new javax.swing.JLabel();
-        jLabel004 = new javax.swing.JLabel();
-        jLabel005 = new javax.swing.JLabel();
-        jLabel006 = new javax.swing.JLabel();
-        jLabel07 = new javax.swing.JLabel();
-        jLabel08 = new javax.swing.JLabel();
-        jLabel007 = new javax.swing.JLabel();
-        jLabel008 = new javax.swing.JLabel();
-        jLabel009 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner6 = new javax.swing.JSpinner();
-        jSpinner7 = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
-        jSpinner9 = new javax.swing.JSpinner();
-        jPanelDrinks = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jSpinner10 = new javax.swing.JSpinner();
-        jSpinner11 = new javax.swing.JSpinner();
-        jSpinner12 = new javax.swing.JSpinner();
-        jSpinner13 = new javax.swing.JSpinner();
-        jSpinner14 = new javax.swing.JSpinner();
-        jLabel010 = new javax.swing.JLabel();
-        jLabel011 = new javax.swing.JLabel();
-        jLabel012 = new javax.swing.JLabel();
-        jLabel014 = new javax.swing.JLabel();
-        jLabel013 = new javax.swing.JLabel();
-        jPanelDesserts = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel015 = new javax.swing.JLabel();
-        jLabel016 = new javax.swing.JLabel();
-        jSpinner15 = new javax.swing.JSpinner();
-        jSpinner16 = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabelsubTotal = new javax.swing.JLabel();
-        jTextFieldsubTotal = new javax.swing.JTextField();
-        jButtonOrder = new javax.swing.JButton();
-        jLabelsubTotal1 = new javax.swing.JLabel();
-        jLabelsubTotal2 = new javax.swing.JLabel();
-        jTextFieldsubTotal1 = new javax.swing.JTextField();
-        jTextFieldsubTotal2 = new javax.swing.JTextField();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-
-        jPanel2.setBackground(new java.awt.Color(154, 154, 154));
-
-        jLabelLTitle.setFont(new java.awt.Font("Forte", 1, 40)); // NOI18N
-        jLabelLTitle.setText("Welcome to McGee !");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelLTitle)
-                .addGap(410, 410, 410))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPaneMenu.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-
-        jPanelFoods.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelFoods.setToolTipText("");
-
-        jLabel01.setOpaque(true);
-
-        jLabel001.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel001.setText("Salad");
-
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jLabel05.setOpaque(true);
-
-        jLabel06.setOpaque(true);
-
-        jLabel04.setOpaque(true);
-
-        jLabel02.setOpaque(true);
-
-        jLabel03.setOpaque(true);
-
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jLabel002.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel002.setText("Japanese Noodles");
-
-        jLabel003.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel003.setText("Spaghetti");
-
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                CatchValueFromSpinner(evt);
-            }
-        });
-
-        jLabel09.setOpaque(true);
-
-        jLabel004.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel004.setText("Macaroni");
-
-        jLabel005.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel005.setText("Noodles");
-
-        jLabel006.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel006.setText("Kids Spaghetti");
-
-        jLabel07.setOpaque(true);
-
-        jLabel08.setOpaque(true);
-
-        jLabel007.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel007.setText("Chicken Rice");
-
-        jLabel008.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel008.setText("Thai Food");
-
-        jLabel009.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel009.setText("Vietnam Food");
-
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner7.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner8.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner9.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        javax.swing.GroupLayout jPanelFoodsLayout = new javax.swing.GroupLayout(jPanelFoods);
-        jPanelFoods.setLayout(jPanelFoodsLayout);
-        jPanelFoodsLayout.setHorizontalGroup(
-            jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                            .addComponent(jLabel04, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                            .addComponent(jLabel01, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel001)
-                    .addComponent(jLabel004)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addComponent(jLabel07, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel007))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel002)
-                    .addComponent(jLabel005)
-                    .addComponent(jLabel008)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel02, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel05, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addComponent(jLabel08, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24)
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel009)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addComponent(jLabel09, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel006)
-                    .addComponent(jLabel003)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addComponent(jLabel06, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addComponent(jLabel03, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanelFoodsLayout.setVerticalGroup(
-            jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(166, 166, 166)
-                        .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165)
-                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel01, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel02, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel03, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel002)
-                    .addComponent(jLabel001)
-                    .addComponent(jLabel003))
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel04, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel05, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel06, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel004)
-                    .addComponent(jLabel005)
-                    .addComponent(jLabel006))
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel09, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel07, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel08, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelFoodsLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFoodsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel007)
-                    .addComponent(jLabel008)
-                    .addComponent(jLabel009))
-                .addGap(414, 414, 414))
-        );
-
-        jTabbedPaneMenu.addTab("   Foods   ", jPanelFoods);
-
-        jPanelDrinks.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel11.setOpaque(true);
-
-        jLabel12.setOpaque(true);
-
-        jLabel14.setOpaque(true);
-
-        jLabel10.setOpaque(true);
-
-        jLabel13.setOpaque(true);
-
-        jSpinner10.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner11.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner12.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner13.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner14.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jLabel010.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel010.setText("Raspberry");
-
-        jLabel011.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel011.setText("Chocolate Pudding");
-
-        jLabel012.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel012.setText("Blue Hawailan");
-
-        jLabel014.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel014.setText("Lemon Ice");
-
-        jLabel013.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel013.setText("Pina");
-
-        javax.swing.GroupLayout jPanelDrinksLayout = new javax.swing.GroupLayout(jPanelDrinks);
-        jPanelDrinks.setLayout(jPanelDrinksLayout);
-        jPanelDrinksLayout.setHorizontalGroup(
-            jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                        .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel010))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)
-                                .addComponent(jSpinner11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel011))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel012)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSpinner12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(23, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDrinksLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSpinner13, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel013))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel014)
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSpinner14, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(162, 162, 162))))
-        );
-        jPanelDrinksLayout.setVerticalGroup(
-            jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDrinksLayout.createSequentialGroup()
-                        .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDrinksLayout.createSequentialGroup()
-                        .addComponent(jSpinner11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jSpinner12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                        .addComponent(jLabel010)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel014)
-                        .addGap(101, 101, 101))
-                    .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                        .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel011)
-                                .addGroup(jPanelDrinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                        .addGap(122, 122, 122)
-                                        .addComponent(jSpinner13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                        .addGap(57, 57, 57)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanelDrinksLayout.createSequentialGroup()
-                                .addComponent(jLabel012)
-                                .addGap(121, 121, 121)
-                                .addComponent(jSpinner14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel013)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-
-        jTabbedPaneMenu.addTab("   Drinks   ", jPanelDrinks);
-
-        jPanelDesserts.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel15.setOpaque(true);
-
-        jLabel16.setOpaque(true);
-
-        jLabel015.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel015.setText("Strawberry Cake");
-
-        jLabel016.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel016.setText("Chocolate Cake");
-
-        jSpinner15.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        jSpinner16.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
-
-        javax.swing.GroupLayout jPanelDessertsLayout = new javax.swing.GroupLayout(jPanelDesserts);
-        jPanelDesserts.setLayout(jPanelDessertsLayout);
-        jPanelDessertsLayout.setHorizontalGroup(
-            jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                .addGroup(jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel015)
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDessertsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jSpinner15, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addGroup(jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel016)
-                    .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner16, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(151, Short.MAX_VALUE))
-        );
-        jPanelDessertsLayout.setVerticalGroup(
-            jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                .addGroup(jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                        .addGroup(jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                                .addGap(207, 207, 207)
-                                .addComponent(jSpinner15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelDessertsLayout.createSequentialGroup()
-                                .addGap(206, 206, 206)
-                                .addComponent(jSpinner16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDessertsLayout.createSequentialGroup()
-                        .addGroup(jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanelDessertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel016)
-                    .addComponent(jLabel015))
-                .addContainerGap(278, Short.MAX_VALUE))
-        );
-
-        jTabbedPaneMenu.addTab("   Desserts   ", jPanelDesserts);
-
-        jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabel3.setText("Food Ordered:");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Salad", null, null, null},
-                {"Japanese Noodles", null, null, null},
-                {"Spaghetti", null, null, null},
-                {"Macaroni", null, null, null},
-                {"Noodles", null, null, null},
-                {"Kids Spaghetti", null, null, null},
-                {"Chicken Rice", null, null, null},
-                {"Thai Food", null, null, null},
-                {"Raspberry", null, null, null},
-                {"Chocolate Pudding", null, null, null},
-                {"Blue Hawailan", null, null, null},
-                {"Pina", null, null, null},
-                {"Lemon Ice", null, null, null},
-                {"Strawberry Cake", null, null, null},
-                {"Chocolate Cake", null, null, null}
-            },
-            new String [] {
-                "Item", "Quantity", "Price (RM)", "Spinner"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabelsubTotal.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabelsubTotal.setText("Sub Total:");
-
-        jButtonOrder.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 1, 24)); // NOI18N
-        jButtonOrder.setText("Order");
-        jButtonOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOrderActionPerformed(evt);
-            }
-        });
-
-        jLabelsubTotal1.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabelsubTotal1.setText("Service Tax 6%:");
-
-        jLabelsubTotal2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 20)); // NOI18N
-        jLabelsubTotal2.setText("Net Total:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelsubTotal1)
-                            .addComponent(jLabelsubTotal2)
-                            .addComponent(jLabelsubTotal))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldsubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldsubTotal2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldsubTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(148, 148, 148))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldsubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelsubTotal))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelsubTotal1)
-                            .addComponent(jTextFieldsubTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelsubTotal2)
-                            .addComponent(jTextFieldsubTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addComponent(jButtonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 616, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 455, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
-       
-    }//GEN-LAST:event_jButtonOrderActionPerformed
-
-    private void CatchValueFromSpinner(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CatchValueFromSpinner
-
-    }//GEN-LAST:event_CatchValueFromSpinner
 
     /**
      * @param args the command line arguments
@@ -860,72 +763,5 @@ public class CustomerMainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonOrder;
-    private javax.swing.JLabel jLabel001;
-    private javax.swing.JLabel jLabel002;
-    private javax.swing.JLabel jLabel003;
-    private javax.swing.JLabel jLabel004;
-    private javax.swing.JLabel jLabel005;
-    private javax.swing.JLabel jLabel006;
-    private javax.swing.JLabel jLabel007;
-    private javax.swing.JLabel jLabel008;
-    private javax.swing.JLabel jLabel009;
-    private javax.swing.JLabel jLabel01;
-    private javax.swing.JLabel jLabel010;
-    private javax.swing.JLabel jLabel011;
-    private javax.swing.JLabel jLabel012;
-    private javax.swing.JLabel jLabel013;
-    private javax.swing.JLabel jLabel014;
-    private javax.swing.JLabel jLabel015;
-    private javax.swing.JLabel jLabel016;
-    private javax.swing.JLabel jLabel02;
-    private javax.swing.JLabel jLabel03;
-    private javax.swing.JLabel jLabel04;
-    private javax.swing.JLabel jLabel05;
-    private javax.swing.JLabel jLabel06;
-    private javax.swing.JLabel jLabel07;
-    private javax.swing.JLabel jLabel08;
-    private javax.swing.JLabel jLabel09;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelLTitle;
-    private javax.swing.JLabel jLabelsubTotal;
-    private javax.swing.JLabel jLabelsubTotal1;
-    private javax.swing.JLabel jLabelsubTotal2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelDesserts;
-    private javax.swing.JPanel jPanelDrinks;
-    private javax.swing.JPanel jPanelFoods;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner11;
-    private javax.swing.JSpinner jSpinner12;
-    private javax.swing.JSpinner jSpinner13;
-    private javax.swing.JSpinner jSpinner14;
-    private javax.swing.JSpinner jSpinner15;
-    private javax.swing.JSpinner jSpinner16;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
-    private javax.swing.JTabbedPane jTabbedPaneMenu;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextFieldsubTotal;
-    private javax.swing.JTextField jTextFieldsubTotal1;
-    private javax.swing.JTextField jTextFieldsubTotal2;
     // End of variables declaration//GEN-END:variables
 }
