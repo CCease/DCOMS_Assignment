@@ -2,9 +2,11 @@ package com.dcoms.client.kitchen;
 
 import com.dcoms.domain.Food;
 import com.dcoms.domain.Order;
+import com.dcoms.service.IKitchenService;
 import com.dcoms.service.impl.KitchenService;
 import com.dcoms.utils.DomainBuilder;
 
+import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +16,17 @@ import static com.dcoms.utils.UUIDGenerator.getUUID;
 
 public class Kitchen {
 
-    private static KitchenService kitchenService;
+    private static IKitchenService kitchenService;
     private static Scanner scanner;
-
-    public Kitchen() throws RemoteException {
-        kitchenService = new KitchenService();
-        scanner = new Scanner(System.in);
-    }
 
     public static void main(String[] args) throws RemoteException {
 
-        kitchenService = new KitchenService();
+        try{
+            kitchenService = (IKitchenService) Naming.lookup("rmi://localhost:2003"+"/KitchenService");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         scanner = new Scanner(System.in);
 
         addDummyData(kitchenService);
@@ -67,7 +69,7 @@ public class Kitchen {
         }
     }
 
-    private static void completeOrder(){
+    private static void completeOrder() throws RemoteException{
 
         printOnGoingOrder(kitchenService.getOnGoingOrder());
         System.out.println("\n=======Choose the number of the order that are completed.=======\n");
@@ -87,7 +89,7 @@ public class Kitchen {
         System.out.println("\n Order "+input+" has completed.\n");
     }
 
-    private static void addDummyData(KitchenService kitchenService){
+    private static void addDummyData(IKitchenService kitchenService) throws RemoteException{
 
         DomainBuilder domainBuilder = new DomainBuilder();
         List<Food> listOfFood = new ArrayList<>();

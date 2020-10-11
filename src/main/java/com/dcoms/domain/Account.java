@@ -1,6 +1,9 @@
 package com.dcoms.domain;
 
-public class Account {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Account implements Serializable{
 
     //ID = IC number
     private String id;
@@ -58,4 +61,23 @@ public class Account {
                 ", username='" + username + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Account other = (Account) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

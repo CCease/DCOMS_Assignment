@@ -31,6 +31,8 @@ public class Main {
             kitchenService.setiOrderService(orderService);
             LocateRegistry.createRegistry(2003);
             Naming.rebind("rmi://localhost:2003"+"/KitchenService",kitchenService);
+            
+            System.out.println("All RMI service are online.");
 
         }catch (Exception e){
             e.printStackTrace();

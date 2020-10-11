@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IKitchenService extends Remote {
 
-    void setiOrderService(IOrderService iOrderService);
+    void setiOrderService(IOrderService iOrderService) throws RemoteException;
 
     List<Order> getOnGoingOrder() throws RemoteException;
 

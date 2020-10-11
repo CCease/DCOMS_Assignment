@@ -1,10 +1,11 @@
 package com.dcoms.client.customer.login;
 
-import com.dcoms.dao.impl.AccountDao;
 import com.dcoms.domain.Account;
+import com.dcoms.service.IAccountService;
 import com.dcoms.service.impl.AccountService;
 
 import java.awt.Color;
+import java.rmi.Naming;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -79,8 +80,6 @@ public class Login extends javax.swing.JFrame {
         jLabelLTitle.setFont(new java.awt.Font("Forte", 1, 40)); // NOI18N
         jLabelLTitle.setText("McGee Food Ordering System");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/dcoms/images/mcgLogo.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -102,7 +101,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonExit.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 1, 24)); // NOI18N
@@ -156,7 +155,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE))
+                        .addGap(0, 7, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
@@ -258,6 +257,7 @@ public class Login extends javax.swing.JFrame {
         String username = jTextFieldUsername.getText();
         String password = new String(jTextFieldPassword.getPassword());
         
+        //TODO: Change back to connection to databse.
         //Create a select query to check if the username and password exist in the database
         //String query = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
         try {
@@ -266,13 +266,15 @@ public class Login extends javax.swing.JFrame {
             st.setString(1, username);
             st.setString(2, password);
             rs = st.executeQuery();*/
-            AccountService accountService = new AccountService();
-            accountService.setiAccountDao(new AccountDao());
+            IAccountService accountService = (IAccountService) Naming.lookup("rmi://localhost:2000"+"/AccountService");
+
             Account account = new Account();
             account.setUsername(username);
             account.setPassword(password);
             
-            if(accountService.login(account)){
+            //TODO: Change back to connection to databse.
+            //if(accountService.login(account)){
+            if(username != ""){
                 //Display user main page
                 com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
                 custmp.createAndShowGUI();

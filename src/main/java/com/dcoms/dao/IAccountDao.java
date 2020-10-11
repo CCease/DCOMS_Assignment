@@ -21,5 +21,7 @@ public interface IAccountDao {
     void updateAccount(Account account);
 
     void deleteAccount(Account account);
+    
+    int findAccountTypeByUsername(String username);
 
 }

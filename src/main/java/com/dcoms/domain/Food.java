@@ -1,6 +1,9 @@
 package com.dcoms.domain;
 
-public class Food {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Food implements Serializable{
 
     private String id;
     private String name;
@@ -59,4 +62,23 @@ public class Food {
                 ", minuteToPrepare=" + minuteToPrepare +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Food other = (Food) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

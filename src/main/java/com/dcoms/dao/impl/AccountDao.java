@@ -43,7 +43,6 @@ public class AccountDao implements IAccountDao {
             st.setString(1, id);
             rs = st.executeQuery();
 
-
             if (rs.next()){
                 return accountDataHandler(rs);
             }else{
@@ -66,7 +65,6 @@ public class AccountDao implements IAccountDao {
             st = My_CNX.getConnection().prepareStatement(query);
             st.setString(1, username);
             rs = st.executeQuery();
-
             if (rs.next()){
                 return accountDataHandler(rs);
             }else{
@@ -101,6 +99,36 @@ public class AccountDao implements IAccountDao {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    //Customer is 2, Admin is 1.
+    @Override
+    public int findAccountTypeByUsername(String username) {
+      
+        PreparedStatement st;
+        ResultSet rs;
+        String userType = "";
+        String query = "SELECT * FROM `users` WHERE `username` = ?";
+        try{
+            st = My_CNX.getConnection().prepareStatement(query);
+            st.setString(1, username);
+            rs = st.executeQuery();
+            
+            if (rs.next()){
+                userType = rs.getString("user_type");
+            }else{
+                return 0;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(userType.equals("Customer")){
+          return 2;
+        }
+        if(userType.equals("Admin")){
+          return 1;
+        }
+        return 0;
     }
 
     @Override
