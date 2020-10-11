@@ -1,8 +1,10 @@
 package com.dcoms.domain;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
-public class Order {
+public class Order implements Serializable{
 
     private String id;
     private List<Food> foods;
@@ -70,4 +72,24 @@ public class Order {
                 ", isSuccess=" + isSuccess +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Order other = (Order) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+   
 }

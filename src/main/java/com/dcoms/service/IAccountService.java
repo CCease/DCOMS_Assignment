@@ -24,5 +24,7 @@ public interface IAccountService extends Remote {
     void deleteAccount(Account account) throws RemoteException;
 
     boolean login(Account account) throws RemoteException;
+    
+    int newLogin(Account account) throws RemoteException;
 
 }

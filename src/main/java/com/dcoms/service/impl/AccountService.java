@@ -72,4 +72,23 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
             return false;
         }
     }
+    
+    //0 means login fail, 1 means user is customer, 2 means customer is admin.
+    @Override
+    public int newLogin(Account account) throws RemoteException {
+        Account databaseAccount = iAccountDao.findAccountByUsername(account.getUsername());
+        System.out.println(databaseAccount);
+        System.out.println(account.getPassword());
+        System.out.println(databaseAccount.getPassword());
+        System.out.println(account.getPassword().equals(databaseAccount.getPassword()));
+        if (databaseAccount == null){
+            return 0;
+        }
+        if (account.getPassword().equals(databaseAccount.getPassword())){
+            return iAccountDao.findAccountTypeByUsername(account.getUsername());
+        }
+        else{
+            return 0;
+        }
+    }
 }

@@ -69,9 +69,11 @@ public class KitchenService extends UnicastRemoteObject implements IKitchenServi
 
     private Order getAndDeleteOrder(Order order) {
         Order result = null;
+        
         for (Iterator<Order> iterator = OnGoingOrder.iterator(); iterator.hasNext();) {
             Order orderInLoop = iterator.next();
-            if (orderInLoop == order) {
+            
+            if (orderInLoop.equals(order)) {
                 result = orderInLoop;
                 // Remove the current element from the iterator and the list.
                 iterator.remove();

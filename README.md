@@ -2,11 +2,19 @@
 
 **Tasks :**
 
-1. Client haven't implement RMI
-2. DAO haven't implement
-3. Login logic need add user type verification
-5. Implementation of Admin Client side.
-5. **TESTING FOR ALL (Except login)**
+1. DAO haven't implement
+
+2. Login logic need add user type verification (Server done)
+
+3. Implementation of Admin Client side. 
+
+4. **TESTING FOR ALL (Except login)**
+
+   
+
+**After finish:**
+
+1. Login change back to connect database.
 
 
 
