@@ -6,6 +6,8 @@ import com.dcoms.service.impl.AccountService;
 
 import java.awt.Color;
 import java.rmi.Naming;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,7 +35,6 @@ public class Login extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabelLTitle = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jButtonExit = new javax.swing.JButton();
         jTextFieldUsername = new javax.swing.JTextField();
         jButtonRegister = new javax.swing.JButton();
@@ -84,24 +85,17 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addComponent(jLabelLTitle)
-                .addGap(42, 42, 42))
+                .addGap(67, 67, 67))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jButtonExit.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 1, 24)); // NOI18N
@@ -148,6 +142,12 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jSeparator2)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelUsername)
                             .addComponent(jLabelPassword))
@@ -155,13 +155,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 7, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addGap(53, 53, 53))
         );
         jPanel1Layout.setVerticalGroup(
@@ -250,8 +244,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
-        //PreparedStatement st;
-        //ResultSet rs;
+        PreparedStatement st;
+        ResultSet rs;
         
         //get username and password
         String username = jTextFieldUsername.getText();
@@ -259,13 +253,13 @@ public class Login extends javax.swing.JFrame {
         
         //TODO: Change back to connection to databse.
         //Create a select query to check if the username and password exist in the database
-        //String query = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
+        String query = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
         try {
-      /*      st = My_CNX.getConnection().prepareStatement(query);
+            st = My_CNX.getConnection().prepareStatement(query);
 
             st.setString(1, username);
             st.setString(2, password);
-            rs = st.executeQuery();*/
+            rs = st.executeQuery();
             IAccountService accountService = (IAccountService) Naming.lookup("rmi://localhost:2000"+"/AccountService");
 
             Account account = new Account();
@@ -273,20 +267,26 @@ public class Login extends javax.swing.JFrame {
             account.setPassword(password);
             
             //TODO: Change back to connection to databse.
-            //if(accountService.login(account)){
-            if(username != ""){
-                //Display user main page
-                com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
-                custmp.createAndShowGUI();
-                custmp.setVisible(true);
-                custmp.pack();
-                custmp.setLocationRelativeTo(null);
-                
-                //close the current form
-                this.dispose();
+            if(rs.next()){
+                if(accountService.newLogin(account)==1){
+                    com.dcoms.client.admin.mainpage.AdminMainPage adminmp = new com.dcoms.client.admin.mainpage.AdminMainPage();
+                    adminmp.setVisible(true);
+                    adminmp.pack();
+                    adminmp.setLocationRelativeTo(null);                   
+                    adminmp.setCustomerID(accountService.getUserIdByUsername(account));                   
+                    this.dispose();
+                }
+                else if (accountService.newLogin(account)==2){
+                    com.dcoms.client.customer.mainpage.CustomerMainPage custmp = new com.dcoms.client.customer.mainpage.CustomerMainPage();
+                    custmp.createAndShowGUI();
+                    custmp.setVisible(true);
+                    custmp.pack();
+                    custmp.setLocationRelativeTo(null);
+                    custmp.setCustomerID(accountService.getUserIdByUsername(account));                   
+                    this.dispose();
+                }
             }
             else {
-                //Show message error
                 JOptionPane.showMessageDialog(rootPane, "Invalid Username or Password");
             }
         } catch (Exception e) {
@@ -308,6 +308,7 @@ public class Login extends javax.swing.JFrame {
         {
             jTextFieldUsername.setText("");
             jTextFieldUsername.setForeground(Color.black);
+            String x = jTextFieldUsername.getText();
         }
     }//GEN-LAST:event_jTextFieldUsernameFocusGained
 
@@ -334,6 +335,7 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButtonRegisterActionPerformed
+        // TODO add your handling code here:
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -371,7 +373,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JButton jButtonRegister;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLTitle;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelUsername;

@@ -26,7 +26,6 @@ public class Register extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabelLTitle = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jLabelLName = new javax.swing.JLabel();
@@ -62,8 +61,6 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/dcoms/images/mcgLogo.png"))); // NOI18N
-
         jLabelLTitle.setFont(new java.awt.Font("Forte", 1, 40)); // NOI18N
         jLabelLTitle.setText("McGee Registration Site");
 
@@ -72,14 +69,9 @@ public class Register extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel1)))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addGap(98, 98, 98)
                 .addComponent(jLabelLTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -88,10 +80,7 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1))
+                    .addComponent(jLabel2)
                     .addComponent(jLabelLTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -245,11 +234,12 @@ public class Register extends javax.swing.JFrame {
         String ic = jTextFieldIC.getText();
         String username = jTextFieldUsername.getText();
         String pass = jTextFieldPassword.getText();
+        String usertype = "Customer";
         
         if (verifyFields()){
             if(!checkUsername(username)){
                 PreparedStatement st;
-                String registerUserQuery = "INSERT INTO `users`(`first_name`, `last_name`, `ic`, `username`, `password`) VALUES (?,?,?,?,?)";
+                String registerUserQuery = "INSERT INTO `users`(`first_name`, `last_name`, `ic`, `username`, `password`, `user_type`) VALUES (?,?,?,?,?,?)";
                 
                 try {
                     st = My_CNX.getConnection().prepareStatement(registerUserQuery);
@@ -258,9 +248,10 @@ public class Register extends javax.swing.JFrame {
                     st.setString(3, ic);
                     st.setString(4, username);
                     st.setString(5, pass);
+                    st.setString(6, usertype);
                     
                     if(st.executeUpdate() != 0){
-                        JOptionPane.showMessageDialog(rootPane, "Your has been created !!!");
+                        JOptionPane.showMessageDialog(rootPane, "Your account has been created !!!");
                         Login login = new Login();
                         login.setVisible(true);
                         login.pack();
@@ -377,7 +368,6 @@ public class Register extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegister;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCPassword;
     private javax.swing.JLabel jLabelFName;

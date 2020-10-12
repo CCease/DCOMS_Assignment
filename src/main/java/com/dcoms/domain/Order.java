@@ -12,6 +12,7 @@ public class Order implements Serializable{
     private long timeResolved;
     private String customerID;
     private boolean isSuccess;
+    private boolean isTakeAway;
 
     public String getId() {
         return id;
@@ -60,6 +61,16 @@ public class Order implements Serializable{
     public void setSuccess(boolean success) {
         isSuccess = success;
     }
+
+    public boolean isTakeAway() {
+        return isTakeAway;
+    }
+
+    public void setTakeAway(boolean isTakeAway) {
+        this.isTakeAway = isTakeAway;
+    }
+    
+    
 
     @Override
     public String toString() {
