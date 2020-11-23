@@ -11,6 +11,7 @@ public class Account implements Serializable{
     private String lastName;
     private String username;
     private String password;
+    private String ic;
 
     public String getId() {
         return id;
@@ -52,6 +53,14 @@ public class Account implements Serializable{
         this.password = password;
     }
 
+    public String getIc() {
+        return ic;
+    }
+
+    public void setIc(String ic) {
+        this.ic = ic;
+    }
+   
     @Override
     public String toString() {
         return "Account{" +

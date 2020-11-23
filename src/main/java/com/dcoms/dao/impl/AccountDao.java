@@ -7,7 +7,11 @@ import com.dcoms.utils.DomainBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class AccountDao implements IAccountDao {
 
@@ -133,31 +137,66 @@ public class AccountDao implements IAccountDao {
 
     @Override
     public void addAccount(Account account) {
-
+           
     }
 
     @Override
     public void updateAccount(Account account) {
-
+        String firstName = account.getFirstName();
+        String lastName = account.getLastName();
+        String ic = account.getIc();
+        String username = account.getUsername();
+        String password = account.getPassword();
+        System.out.println("Update Success !!!!!!!");
+        PreparedStatement st; 
+        /*String updateQuery = "UPDATE users SET `firstName` ="+account.getFirstName()+
+                ", `lastName` =" +account.getLastName()+
+                ", `ic` =" +account.getIc()+ 
+                ", `username` =" +account.getUsername()+ 
+                ", `password` =" +account.getPassword()+ 
+                "WHERE `userID` ="+account.getId();*/
+        String updateQuery = "UPDATE `users` SET `first_name` =?, `last_name` =?, `ic` =?, `username` =?, `password` =? WHERE `userID` ="+account.getId();
+   
+        try {
+            st = My_CNX.getConnection().prepareStatement(updateQuery);
+            st.setString(1, firstName);
+            st.setString(2, lastName);
+            st.setString(3, ic);
+            st.setString(4, username);
+            st.setString(5, password);
+            st.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Updated successfully!");
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDao.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }
 
     @Override
     public void deleteAccount(Account account) {
-
+        System.out.println("Delete Success !!!!!!!");
+        PreparedStatement st; 
+        String deleteQuery = "DELETE FROM `users` WHERE `userID` ="+account.getId();
+        try {
+            st = My_CNX.getConnection().prepareStatement(deleteQuery);
+            st.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Deleted successfully!");
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private Account accountDataHandler(ResultSet resultSet){
         try{
-            //String id = resultSet.getString("id");
+            String id = resultSet.getString("userID");
             String first_name = resultSet.getString("first_name");
             String last_name = resultSet.getString("last_name");
             String ic = resultSet.getString("ic");
             String password = resultSet.getString("password");
-            String username = resultSet.getString("username"); //TODO: Check if this correct. Sync with databse design.
+            String username = resultSet.getString("username"); 
 
             DomainBuilder domainBuilder = new DomainBuilder();
-            return domainBuilder.newAccount(ic, first_name, last_name, password, username);
-            //password = password, phonenumber = username
+            return domainBuilder.newAccount(id, first_name, last_name, ic, password, username);
+            
         }catch (Exception e){
             e.printStackTrace();
             return null;

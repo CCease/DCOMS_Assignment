@@ -27,4 +27,5 @@ public interface IAccountService extends Remote {
     
     int newLogin(Account account) throws RemoteException;
 
+    public String getUserIdByUsername(Account account) throws RemoteException;
 }

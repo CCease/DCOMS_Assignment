@@ -91,4 +91,18 @@ public class AccountService extends UnicastRemoteObject implements IAccountServi
             return 0;
         }
     }
+    
+    @Override
+    public String getUserIdByUsername(Account account) throws RemoteException {
+        Account databaseAccount = iAccountDao.findAccountByUsername(account.getUsername());
+        if (databaseAccount == null){
+            return null;
+        }
+        if (account.getPassword().equals(databaseAccount.getPassword())){
+            return databaseAccount.getId();
+        }
+        else{
+            return null;
+        }
+    }
 }

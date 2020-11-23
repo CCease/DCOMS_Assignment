@@ -30,11 +30,7 @@ public class Kitchen {
         scanner = new Scanner(System.in);
 
         addDummyData(kitchenService);
-        addDummyData(kitchenService);
-        addDummyData(kitchenService);
-        addDummyData(kitchenService);
-        addDummyData(kitchenService);
-        addDummyData(kitchenService);
+        
         System.out.println("=======Welcome to kitchen client.=======");
 
         //Password + Username Maybe
@@ -104,11 +100,11 @@ public class Kitchen {
 
         for (int i = 0; i < listOfFood.size(); i++) {
             Food temp = listOfFood.get(i);
-            temp.setId(String.valueOf(i));
+            temp.setId(String.valueOf(i+1));
             listOfFood.set(i,temp);
         }
 
-        Order order1 = domainBuilder.newOrder(getUUID(),listOfFood,getUUID());
+        Order order1 = domainBuilder.newOrder(listOfFood,getUUID());
         kitchenService.addOrder(order1);
     }
 }
